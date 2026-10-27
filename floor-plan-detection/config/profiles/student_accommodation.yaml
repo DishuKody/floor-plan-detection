@@ -1,0 +1,23 @@
+# Sheet profile for "Student Accomodation.pdf" (Lewis & Hickey, 1:100, A1): settings that cannot be inferred from the geometry.
+# Use:  python -m src.cli plan.pdf --profile config/profiles/student_accommodation.yaml     (run.bat: 4th argument)
+drawing:
+  scale_ratio: 100
+vector:
+  roi: [40, 330, 1915, 1290]
+  footprint: [[725, 360, 1130, 885], [130, 860, 1720, 1270]]
+  min_wall_stroke: 0.2
+  gap_closing: {enabled: false}   # the axis-aligned extension above already closes this sheet; keeps its v4 output unchanged
+fixtures:
+  px_per_pt: 3
+  thresh: 0.80
+  # exemplar boxes [x0,y0,x1,y1] (page pt) of the en-suite pod symbol; copies (mirrored/rotated) are found by template matching
+  pod_exemplars: [[357, 1100, 394, 1155], [837, 485, 888, 533]]
+  extra_search_boxes: [[1690, 740, 1900, 960]]
+windows:
+  px_per_pt: 3
+  w_range: [0.4, 0.56]
+  thresh: 0.75
+  band_pt: 30
+  exemplars: [[259, 872.5, 297, 878.5], [349.5, 1246.5, 388, 1250.5]]
+instances:
+  open_plan_split: {enabled: false}   # v4 behaviour (no region there exceeds the threshold anyway)

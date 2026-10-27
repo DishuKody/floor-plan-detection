@@ -1,0 +1,6 @@
+# Optional GPU extras (tested: Windows 11, RTX 2050 4 GB, driver 592.27, Python 3.11.16). Install ON TOP of requirements.txt:
+#   uv pip install --python .venv\Scripts\python.exe -r requirements-gpu.txt
+# This REPLACES the CPU 'onnxruntime' package (the CPU and GPU builds conflict): run `uv pip uninstall onnxruntime` first.
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128          # ~2.7 GB; bundles CUDA 12.8 + cuDNN 9 DLLs that onnxruntime-gpu reuses
+onnxruntime-gpu==1.23.2      # NOT >=1.31: those builds target CUDA 13 (cublas64_13.dll) and do not match PyTorch cu128

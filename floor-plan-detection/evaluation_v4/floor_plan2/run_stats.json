@@ -1,0 +1,77 @@
+{
+ "mode": "raster",
+ "version": "v4",
+ "device": "cuda",
+ "device_info": {
+  "name": "NVIDIA GeForce RTX 2050",
+  "capability": "8.6",
+  "vram_total_mb": 4096,
+  "vram_free_mb": 3288,
+  "torch": "2.11.0+cu128",
+  "cuda_runtime": "12.8"
+ },
+ "ocr_providers": {
+  "text_det.infer.session": [
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "text_cls.infer.session": [
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "text_rec.session.session": [
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ]
+ },
+ "gpu_measured": {
+  "available": true,
+  "n_samples": 12,
+  "interval_s": 0.1,
+  "baseline_vram_used_mb": 564.0,
+  "peak_vram_used_mb": 1716.0,
+  "vram_delta_over_baseline_mb": 1152.0,
+  "peak_util_pct": 53.0,
+  "mean_util_pct": 22.5,
+  "samples_over_10pct": 6
+ },
+ "stage_times_s": {
+  "load": 0.06,
+  "ocr": 1.11,
+  "segmentation": 0.17,
+  "polygons": 0.08,
+  "elements": 0.57,
+  "write_images": 0.11
+ },
+ "runtime_s": 2.1,
+ "n_rooms": 8,
+ "by_type": {
+  "kitchen": 1,
+  "bedroom": 2,
+  "dining_room": 1,
+  "bathroom": 1,
+  "unknown": 1,
+  "living_room": 1,
+  "balcony": 1
+ },
+ "n_elements": {
+  "door": 4,
+  "circle": 1,
+  "opening_line": 23,
+  "wall": 13
+ },
+ "ocr_boxes": 12,
+ "room_label_boxes": 7,
+ "segmentation": {
+  "otsu": 141.0,
+  "wall_kernel_px": 5,
+  "text_blobs_removed": 30,
+  "n_closures": 23,
+  "footprint_frac": 0.544
+ },
+ "rooms_with_printed_area": 4,
+ "implied_m2_per_px2": 0.00021626172185016114,
+ "printed_area_ratio_cv_pct": 114.4,
+ "peak_ram_mb": 1575,
+ "note": "classical CV + OCR; no trained room model, so no per-room probabilities"
+}

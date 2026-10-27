@@ -1,0 +1,4 @@
+# Sheet profile for "A1800 Ground Flr.pdf" (Foster and Partners, 1:200, A0): only the printed scale (the sheet text is outlined, so it
+# cannot be read from the PDF). Everything else (stroke classes, plan footprint, ROI, pt parameters) is derived from the drawing.
+drawing:
+  scale_ratio: 200

@@ -1,0 +1,32 @@
+# environments / caches (machine specific, recreated by setup.bat)
+.venv/
+.venv_cpuref/
+**/.venv/
+**/.venv_cpuref/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# generated run results (reproducible with run.bat); curated deliverables live in evaluation_v4/ and evaluation_v5/
+/output*/
+/evaluation_v5_runs/
+/floor-plan-detection/outputs/
+/floor-plan-detection/bench*/
+
+# secrets / local config
+.env
+.env.*
+*.pem
+*.key
+credentials*
+secrets*
+.claude/
+
+# blocked by Windows execution policy, superseded by run.bat
+run.ps1
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

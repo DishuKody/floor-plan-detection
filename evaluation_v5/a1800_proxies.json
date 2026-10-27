@@ -1,0 +1,87 @@
+{
+ "a1800_v4": {
+  "n_rooms": 73,
+  "by_type": {
+   "bathroom": 9,
+   "unknown": 62,
+   "corridor_or_hallway": 1,
+   "stair": 1
+  },
+  "named_labels": 38,
+  "named_labels_inside_a_room": 8,
+  "label_isolation": 1.0,
+  "merged_rooms": 0,
+  "rooms_with_named_label": 8,
+  "large_rooms_over_150m2": 0,
+  "max_room_m2": 37.5,
+  "circle_shaped_rooms": 0,
+  "unknown_share": 0.849,
+  "boundary_on_wall": 0.426,
+  "elements": {
+   "door": 187,
+   "wall": 252
+  }
+ },
+ "a1800_v5_no_split": {
+  "n_rooms": 236,
+  "by_type": {
+   "corridor_or_hallway": 42,
+   "classroom_or_lab": 6,
+   "communal_or_shared_space": 7,
+   "unknown": 148,
+   "storage": 8,
+   "bathroom": 13,
+   "stair": 3,
+   "laundry_or_utility": 1,
+   "sports_or_assembly_hall": 4,
+   "toilet_or_wc": 3,
+   "kitchen": 1
+  },
+  "named_labels": 38,
+  "named_labels_inside_a_room": 37,
+  "label_isolation": 0.514,
+  "merged_rooms": 1,
+  "rooms_with_named_label": 20,
+  "large_rooms_over_150m2": 4,
+  "max_room_m2": 3536.0,
+  "circle_shaped_rooms": 3,
+  "unknown_share": 0.627,
+  "boundary_on_wall": 0.958,
+  "elements": {
+   "circle": 260,
+   "door": 185,
+   "wall": 214
+  }
+ },
+ "a1800_v5": {
+  "n_rooms": 259,
+  "by_type": {
+   "corridor_or_hallway": 49,
+   "unknown": 146,
+   "classroom_or_lab": 22,
+   "communal_or_shared_space": 9,
+   "storage": 8,
+   "bathroom": 13,
+   "stair": 3,
+   "laundry_or_utility": 1,
+   "sports_or_assembly_hall": 4,
+   "toilet_or_wc": 3,
+   "kitchen": 1
+  },
+  "named_labels": 38,
+  "named_labels_inside_a_room": 35,
+  "label_isolation": 1.0,
+  "merged_rooms": 0,
+  "rooms_with_named_label": 35,
+  "large_rooms_over_150m2": 5,
+  "max_room_m2": 1898.3,
+  "circle_shaped_rooms": 3,
+  "unknown_share": 0.564,
+  "boundary_on_wall": 0.926,
+  "elements": {
+   "circle": 260,
+   "door": 185,
+   "wall": 214
+  }
+ }
+}

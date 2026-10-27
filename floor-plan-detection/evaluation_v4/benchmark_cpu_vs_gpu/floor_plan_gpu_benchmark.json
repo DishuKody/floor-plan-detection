@@ -1,0 +1,390 @@
+{
+ "runs": {
+  "cpu_only_env": [
+   {
+    "process_wall_s": 10.7,
+    "pipeline_s": 6.4,
+    "stages": {
+     "load": 0.01,
+     "ocr": 4.7,
+     "segmentation": 0.5,
+     "polygons": 0.1,
+     "elements": 0.94,
+     "write_images": 0.19
+    },
+    "gpu": null,
+    "ocr_providers": {
+     "text_det.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_cls.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_rec.session.session": [
+      "CPUExecutionProvider"
+     ]
+    },
+    "peak_ram_mb": 813,
+    "device": "cpu"
+   },
+   {
+    "process_wall_s": 8.2,
+    "pipeline_s": 6.8,
+    "stages": {
+     "load": 0.01,
+     "ocr": 5.02,
+     "segmentation": 0.5,
+     "polygons": 0.11,
+     "elements": 0.98,
+     "write_images": 0.17
+    },
+    "gpu": null,
+    "ocr_providers": {
+     "text_det.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_cls.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_rec.session.session": [
+      "CPUExecutionProvider"
+     ]
+    },
+    "peak_ram_mb": 814,
+    "device": "cpu"
+   },
+   {
+    "process_wall_s": 8.0,
+    "pipeline_s": 6.7,
+    "stages": {
+     "load": 0.01,
+     "ocr": 4.88,
+     "segmentation": 0.49,
+     "polygons": 0.11,
+     "elements": 0.99,
+     "write_images": 0.18
+    },
+    "gpu": null,
+    "ocr_providers": {
+     "text_det.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_cls.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_rec.session.session": [
+      "CPUExecutionProvider"
+     ]
+    },
+    "peak_ram_mb": 813,
+    "device": "cpu"
+   }
+  ],
+  "gpu_env_cpu": [
+   {
+    "process_wall_s": 7.48,
+    "pipeline_s": 6.3,
+    "stages": {
+     "load": 0.01,
+     "ocr": 4.54,
+     "segmentation": 0.51,
+     "polygons": 0.1,
+     "elements": 0.95,
+     "write_images": 0.17
+    },
+    "gpu": null,
+    "ocr_providers": {
+     "text_det.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_cls.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_rec.session.session": [
+      "CPUExecutionProvider"
+     ]
+    },
+    "peak_ram_mb": 808,
+    "device": "cpu"
+   },
+   {
+    "process_wall_s": 7.6,
+    "pipeline_s": 6.4,
+    "stages": {
+     "load": 0.03,
+     "ocr": 4.6,
+     "segmentation": 0.51,
+     "polygons": 0.1,
+     "elements": 0.98,
+     "write_images": 0.2
+    },
+    "gpu": null,
+    "ocr_providers": {
+     "text_det.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_cls.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_rec.session.session": [
+      "CPUExecutionProvider"
+     ]
+    },
+    "peak_ram_mb": 813,
+    "device": "cpu"
+   },
+   {
+    "process_wall_s": 7.87,
+    "pipeline_s": 6.6,
+    "stages": {
+     "load": 0.01,
+     "ocr": 4.85,
+     "segmentation": 0.51,
+     "polygons": 0.1,
+     "elements": 0.99,
+     "write_images": 0.17
+    },
+    "gpu": null,
+    "ocr_providers": {
+     "text_det.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_cls.infer.session": [
+      "CPUExecutionProvider"
+     ],
+     "text_rec.session.session": [
+      "CPUExecutionProvider"
+     ]
+    },
+    "peak_ram_mb": 812,
+    "device": "cpu"
+   }
+  ],
+  "gpu_env_cuda": [
+   {
+    "process_wall_s": 6.73,
+    "pipeline_s": 5.0,
+    "stages": {
+     "load": 1.47,
+     "ocr": 1.79,
+     "segmentation": 0.5,
+     "polygons": 0.1,
+     "elements": 0.94,
+     "write_images": 0.21
+    },
+    "gpu": null,
+    "ocr_providers": {
+     "text_det.infer.session": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+     ],
+     "text_cls.infer.session": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+     ],
+     "text_rec.session.session": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+     ]
+    },
+    "peak_ram_mb": 1575,
+    "device": "cuda"
+   },
+   {
+    "process_wall_s": 6.68,
+    "pipeline_s": 5.0,
+    "stages": {
+     "load": 1.52,
+     "ocr": 1.78,
+     "segmentation": 0.49,
+     "polygons": 0.1,
+     "elements": 0.97,
+     "write_images": 0.16
+    },
+    "gpu": null,
+    "ocr_providers": {
+     "text_det.infer.session": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+     ],
+     "text_cls.infer.session": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+     ],
+     "text_rec.session.session": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+     ]
+    },
+    "peak_ram_mb": 1574,
+    "device": "cuda"
+   },
+   {
+    "process_wall_s": 6.9,
+    "pipeline_s": 5.1,
+    "stages": {
+     "load": 1.52,
+     "ocr": 1.78,
+     "segmentation": 0.47,
+     "polygons": 0.11,
+     "elements": 1.06,
+     "write_images": 0.16
+    },
+    "gpu": null,
+    "ocr_providers": {
+     "text_det.infer.session": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+     ],
+     "text_cls.infer.session": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+     ],
+     "text_rec.session.session": [
+      "CUDAExecutionProvider",
+      "CPUExecutionProvider"
+     ]
+    },
+    "peak_ram_mb": 1575,
+    "device": "cuda"
+   }
+  ]
+ },
+ "summary": {
+  "cpu_only_env": {
+   "pipeline_s": {
+    "median": 6.7,
+    "min": 6.4,
+    "max": 6.8
+   },
+   "process_wall_s": {
+    "median": 8.2,
+    "min": 8.0,
+    "max": 10.7
+   },
+   "stage_median_s": {
+    "load": 0.01,
+    "ocr": 4.88,
+    "segmentation": 0.5,
+    "polygons": 0.11,
+    "elements": 0.98,
+    "write_images": 0.18
+   },
+   "peak_ram_mb": 814,
+   "ocr_providers": [
+    "CPUExecutionProvider"
+   ]
+  },
+  "gpu_env_cpu": {
+   "pipeline_s": {
+    "median": 6.4,
+    "min": 6.3,
+    "max": 6.6
+   },
+   "process_wall_s": {
+    "median": 7.6,
+    "min": 7.48,
+    "max": 7.87
+   },
+   "stage_median_s": {
+    "load": 0.01,
+    "ocr": 4.6,
+    "segmentation": 0.51,
+    "polygons": 0.1,
+    "elements": 0.98,
+    "write_images": 0.17
+   },
+   "peak_ram_mb": 813,
+   "ocr_providers": [
+    "CPUExecutionProvider"
+   ]
+  },
+  "gpu_env_cuda": {
+   "pipeline_s": {
+    "median": 5.0,
+    "min": 5.0,
+    "max": 5.1
+   },
+   "process_wall_s": {
+    "median": 6.73,
+    "min": 6.68,
+    "max": 6.9
+   },
+   "stage_median_s": {
+    "load": 1.52,
+    "ocr": 1.78,
+    "segmentation": 0.49,
+    "polygons": 0.1,
+    "elements": 0.97,
+    "write_images": 0.16
+   },
+   "peak_ram_mb": 1575,
+   "ocr_providers": [
+    "CPUExecutionProvider",
+    "CUDAExecutionProvider"
+   ],
+   "gpu_measured_in_separate_sampled_run": null,
+   "sampled_run_pipeline_s": 5.0
+  },
+  "speedup_cuda_vs_cpu_only_env_median": {
+   "pipeline": 1.34,
+   "process_wall": 1.22,
+   "ocr_stage": 2.74
+  }
+ },
+ "cpu_only_vs_cuda_results": {
+  "n_rooms": [
+   18,
+   18
+  ],
+  "room_types_identical": true,
+  "room_polygons_identical": true,
+  "windows": [
+   0,
+   0
+  ],
+  "doors": [
+   12,
+   12
+  ],
+  "ocr_boxes": [
+   30,
+   30
+  ],
+  "ocr_text_sets_identical": true,
+  "ocr_texts_only_a": [],
+  "ocr_texts_only_b": []
+ },
+ "sampled_run": {
+  "process_wall_s": 6.76,
+  "pipeline_s": 5.0,
+  "stages": {
+   "load": 1.51,
+   "ocr": 1.82,
+   "segmentation": 0.48,
+   "polygons": 0.1,
+   "elements": 0.95,
+   "write_images": 0.17
+  },
+  "gpu": null,
+  "ocr_providers": {
+   "text_det.infer.session": [
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+   ],
+   "text_cls.infer.session": [
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+   ],
+   "text_rec.session.session": [
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+   ]
+  },
+  "peak_ram_mb": 1575,
+  "device": "cuda"
+ },
+ "conditions": {
+  "note": "laptop on battery / Balanced plan during benchmarking; timings drift, hence interleaving"
+ }
+}

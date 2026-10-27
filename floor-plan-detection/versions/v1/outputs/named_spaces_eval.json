@@ -1,0 +1,141 @@
+{
+ "n_ok": 3,
+ "n_checked": 8,
+ "not_found_by_ocr": [
+  "cleaners"
+ ],
+ "spaces": {
+  "riser": {
+   "room": "room-0050",
+   "type": "shaft_or_riser",
+   "area_m2": 72.1,
+   "expected_types": [
+    "shaft_or_riser"
+   ],
+   "area_range": [
+    1.5,
+    12
+   ],
+   "ok": false,
+   "issues": [
+    "merged_with:aov+core03_lobby",
+    "implausible_area:72.1m2"
+   ]
+  },
+  "store": {
+   "room": "room-0090",
+   "type": "storage",
+   "area_m2": 18.5,
+   "expected_types": [
+    "storage"
+   ],
+   "area_range": [
+    8,
+    45
+   ],
+   "ok": true,
+   "issues": []
+  },
+  "core03_lobby": {
+   "room": "room-0050",
+   "type": "shaft_or_riser",
+   "area_m2": 72.1,
+   "expected_types": [
+    "communal_or_shared_space",
+    "corridor_or_hallway"
+   ],
+   "area_range": [
+    20,
+    70
+   ],
+   "ok": false,
+   "issues": [
+    "wrong_type:shaft_or_riser",
+    "merged_with:aov+riser",
+    "implausible_area:72.1m2"
+   ]
+  },
+  "tutor_flat": {
+   "room": "room-0087",
+   "type": "other",
+   "area_m2": 3.4,
+   "expected_types": [
+    "other"
+   ],
+   "area_range": [
+    15,
+    80
+   ],
+   "ok": false,
+   "issues": [
+    "implausible_area:3.4m2"
+   ]
+  },
+  "stair": {
+   "room": "room-0048",
+   "type": "stair",
+   "area_m2": 6.0,
+   "expected_types": [
+    "stair"
+   ],
+   "area_range": [
+    8,
+    45
+   ],
+   "ok": false,
+   "issues": [
+    "implausible_area:6.0m2"
+   ]
+  },
+  "lift04": {
+   "room": "room-0051",
+   "type": "lift",
+   "area_m2": 2.2,
+   "expected_types": [
+    "lift"
+   ],
+   "area_range": [
+    2,
+    8
+   ],
+   "ok": true,
+   "issues": []
+  },
+  "aov": {
+   "room": "room-0050",
+   "type": "shaft_or_riser",
+   "area_m2": 72.1,
+   "expected_types": [
+    "shaft_or_riser"
+   ],
+   "area_range": [
+    1,
+    8
+   ],
+   "ok": false,
+   "issues": [
+    "merged_with:core03_lobby+riser",
+    "implausible_area:72.1m2"
+   ]
+  },
+  "lift05": {
+   "room": "room-0052",
+   "type": "lift",
+   "area_m2": 2.2,
+   "expected_types": [
+    "lift"
+   ],
+   "area_range": [
+    2,
+    8
+   ],
+   "ok": true,
+   "issues": []
+  }
+ },
+ "tutor_flat_group": {
+  "n_rooms": 2,
+  "area_m2": 15.4,
+  "plausible_25_80": false
+ }
+}

@@ -1,0 +1,66 @@
+{
+ "proxy_unit_id": {
+  "bedroom": {
+   "n_units": 39,
+   "counts": {
+    "ok": 37,
+    "missed": 2
+   },
+   "isolated_and_correct": 37
+  },
+  "kitchen": {
+   "n_units": 7,
+   "counts": {
+    "ok": 6,
+    "missed": 1
+   },
+   "isolated_and_correct": 6
+  }
+ },
+ "n_unit_labels_read": 46,
+ "room_level": {
+  "rooms": 106,
+  "rooms_with_0_units": 63,
+  "rooms_with_1_unit": 43,
+  "rooms_with_2plus_units": 0
+ },
+ "geometry": {
+  "n_rooms": 106,
+  "invalid_polygons": 0,
+  "pairs_overlapping_gt_2pct": 0,
+  "rooms_with_holes": 1
+ },
+ "by_type": {
+  "bathroom": 39,
+  "bedroom": 38,
+  "corridor_or_hallway": 7,
+  "kitchen": 6,
+  "lift": 2,
+  "other": 2,
+  "shaft_or_riser": 1,
+  "stair": 1,
+  "storage": 1,
+  "unknown": 9
+ },
+ "review_required": 52,
+ "per_unit_failures": {
+  "02/D2/06/4": {
+   "expected": "bedroom",
+   "room": null,
+   "predicted": null,
+   "status": "missed"
+  },
+  "02/D2/06/5": {
+   "expected": "bedroom",
+   "room": null,
+   "predicted": null,
+   "status": "missed"
+  },
+  "02/D2/06/K": {
+   "expected": "kitchen",
+   "room": null,
+   "predicted": null,
+   "status": "missed"
+  }
+ }
+}

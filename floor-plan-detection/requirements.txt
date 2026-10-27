@@ -1,0 +1,20 @@
+# CPU installation (tested: Windows 11, CPython 3.11.16). Install with setup.bat, or manually:
+#   uv venv --python 3.11 .venv
+#   uv pip install --python .venv\Scripts\python.exe -r requirements.txt
+#   uv pip install --python .venv\Scripts\python.exe --no-deps rapidocr-onnxruntime==1.4.4
+# rapidocr-onnxruntime is installed with --no-deps because it declares the NON-headless 'opencv-python', which would clash with the
+# headless build below; its other dependencies (pyclipper, six, tqdm, pyyaml, pillow, shapely, onnxruntime, numpy) are listed here.
+numpy==2.4.6
+opencv-python-headless==5.0.0.93
+pymupdf==2.0
+shapely==2.2.0
+scikit-image==0.26.0
+scipy==1.17.1
+pyyaml==6.0.3
+pillow==13.0.0
+onnxruntime==1.31.0          # CPU build; the optional GPU environment uses onnxruntime-gpu==1.23.2 (requirements-gpu.txt)
+pyclipper==1.4.0
+six==1.17.0
+tqdm
+psutil==7.2.2
+pytest==9.1.1

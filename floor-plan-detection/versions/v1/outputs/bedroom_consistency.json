@@ -1,0 +1,22 @@
+{
+ "groups": {
+  "TYPEB503": {
+   "n": 7,
+   "median_m2": 8.4,
+   "cv": 0.073,
+   "n_outliers_gt_10pct": 2
+  },
+  "TYPEB703": {
+   "n": 24,
+   "median_m2": 9.25,
+   "cv": 0.007,
+   "n_outliers_gt_10pct": 0
+  }
+ },
+ "pockets_touching_bedroom": 3,
+ "pocket_ids": [
+  "room-0005",
+  "room-0010",
+  "room-0021"
+ ]
+}

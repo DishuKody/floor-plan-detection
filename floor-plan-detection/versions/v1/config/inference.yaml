@@ -1,0 +1,30 @@
+input:
+  render_scale: 1.5            # reference raster = page rendered at 1.5 px/pt; all pixel outputs are in this frame
+drawing:
+  scale_ratio: 100             # printed scale 1:100 on an A1 sheet (read from the title block); used ONLY for approximate m2
+vector:
+  # plan region of the sheet in displayed-page points [x0, y0, x1, y1]; excludes title block / key plan
+  roi: [40, 330, 1915, 1290]
+  # building footprint rectangles [x0, y0, x1, y1] (union); regions outside are treated as exterior / sheet furniture
+  footprint: [[725, 360, 1130, 885], [130, 860, 1720, 1270]]
+  raster_px_per_pt: 4
+  min_wall_stroke: 0.2         # strokes thinner than this (furniture, hatching) are ignored for wall geometry
+  wall_channel_close_pt: 3.5   # fills the interior of double-line walls
+  min_inscribed_radius_pt: 7   # regions thinner than this are wall cavities / window strips, not rooms
+  min_area_pt2: 30
+  min_room_area_m2: 1.0        # smaller regions (kitchen-unit niches, jamb pockets) are listed in debug/discarded_fragments.json, not output as rooms
+  door_arc: {r_min: 12, r_max: 40, sweep_min: 60, sweep_max: 120}
+  extend_walls: {min_len: 40, max_ext: 30}
+ocr:
+  enabled: true
+  tile_px: 1600
+  overlap_px: 200
+  upscale: 3.0
+  min_score: 0.5
+instances:
+  split_by_labels: false       # label-guided watershed split of regions holding >=2 unit-ID labels (see report: not independent of proxy metric)
+fixtures:
+  px_per_pt: 3
+  thresh: 0.80                 # normalised cross-correlation of the thin-line layer (CAD blocks match at ~0.95-1.0)
+  # exemplar boxes [x0,y0,x1,y1] (page pt) of the en-suite pod symbol; copies (mirrored/rotated) are found by template matching
+  pod_exemplars: [[357, 1100, 394, 1155], [837, 485, 888, 533]]

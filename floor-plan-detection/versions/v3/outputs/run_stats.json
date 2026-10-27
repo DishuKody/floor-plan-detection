@@ -1,0 +1,70 @@
+{
+ "device": "cuda",
+ "device_info": {
+  "name": "NVIDIA GeForce RTX 2050",
+  "capability": "8.6",
+  "vram_total_mb": 4096,
+  "vram_free_mb": 3300,
+  "torch": "2.11.0+cu128",
+  "cuda_runtime": "12.8"
+ },
+ "ocr_providers": {
+  "text_det.infer.session": [
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "text_cls.infer.session": [
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "text_rec.session.session": [
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ]
+ },
+ "gpu_measured": {
+  "available": true,
+  "n_samples": 77,
+  "interval_s": 0.25,
+  "baseline_vram_used_mb": 405.0,
+  "peak_vram_used_mb": 1673.0,
+  "vram_delta_over_baseline_mb": 1268.0,
+  "peak_util_pct": 100.0,
+  "mean_util_pct": 20.0,
+  "samples_over_10pct": 33
+ },
+ "stage_times_s": {
+  "extract_paths_and_arcs": 11.18,
+  "wall_mask_extension_doors_labeling": 3.69,
+  "region_polygons": 0.37,
+  "ocr": 7.15,
+  "structural_pass": 0.55,
+  "pod_template_matching": 1.87,
+  "classification_adoption": 0.29,
+  "elements_walls": 3.4,
+  "write_outputs": 4.12
+ },
+ "runtime_s": 32.6,
+ "n_rooms": 109,
+ "by_type": {
+  "kitchen": 6,
+  "bedroom": 38,
+  "bathroom": 41,
+  "corridor_or_hallway": 13,
+  "stair": 1,
+  "unknown": 2,
+  "shaft_or_riser": 2,
+  "communal_or_shared_space": 1,
+  "lift": 2,
+  "other": 2,
+  "storage": 1
+ },
+ "n_elements": {
+  "door": 105,
+  "window": 62,
+  "column": 36,
+  "wall": 54
+ },
+ "peak_ram_mb": 2081,
+ "note": "neural network inference is limited to the RapidOCR det/cls/rec models (ONNX Runtime); everything else is classical geometry"
+}

@@ -1,0 +1,210 @@
+{
+ "v2": {
+  "n_rooms": 107,
+  "by_type": {
+   "bathroom": 39,
+   "bedroom": 38,
+   "communal_or_shared_space": 1,
+   "corridor_or_hallway": 11,
+   "kitchen": 6,
+   "lift": 2,
+   "other": 2,
+   "shaft_or_riser": 2,
+   "stair": 1,
+   "storage": 1,
+   "unknown": 4
+  },
+  "n_review_required": 48,
+  "n_unknown": 4,
+  "largest_room": {
+   "id": "room-0048",
+   "type": "communal_or_shared_space",
+   "m2": 37.6
+  },
+  "unit_id_proxy": {
+   "bedroom": {
+    "n": 39,
+    "isolated_correct": 37,
+    "counts": {
+     "missed": 2,
+     "ok": 37
+    }
+   },
+   "kitchen": {
+    "n": 7,
+    "isolated_correct": 6,
+    "counts": {
+     "missed": 1,
+     "ok": 6
+    }
+   }
+  },
+  "named_spaces": {
+   "ok": 7,
+   "checked": 8,
+   "tutor_flat_group": {
+    "n_rooms": 2,
+    "area_m2": 25.9,
+    "plausible_25_80": true
+   },
+   "failing": {
+    "tutor_flat": [
+     "implausible_area:13.9m2"
+    ]
+   },
+   "passing": [
+    "aov",
+    "core03_lobby",
+    "lift04",
+    "lift05",
+    "riser",
+    "stair",
+    "store"
+   ]
+  },
+  "bedroom_consistency": {
+   "TYPEB503": {
+    "n": 7,
+    "cv": 0.077,
+    "outliers_gt10pct": 2
+   },
+   "TYPEB703": {
+    "n": 24,
+    "cv": 0.007,
+    "outliers_gt10pct": 0
+   }
+  },
+  "pockets_touching_bedroom": 0,
+  "geometry": {
+   "n_rooms": 107,
+   "invalid_polygons": 0,
+   "pairs_overlapping_gt_2pct": 0,
+   "rooms_with_holes": 0
+  },
+  "boundary_fit": {
+   "mean_frac_boundary_gt3pt_from_wall": 0.123,
+   "max_wall_ink_fraction_inside": 0.0973
+  },
+  "coordinates": {
+   "mean_median_px_boundary_to_ink": 0.8,
+   "max_abs_px_vs_pt_x_scale": 0.055
+  },
+  "elements": {
+   "door": 105,
+   "window": 14,
+   "column": 36,
+   "wall": 54
+  },
+  "bathrooms_without_host_room": 0,
+  "runtime_s": 24.4,
+  "peak_ram_mb": 998
+ },
+ "v3": {
+  "n_rooms": 109,
+  "by_type": {
+   "bathroom": 41,
+   "bedroom": 38,
+   "communal_or_shared_space": 1,
+   "corridor_or_hallway": 13,
+   "kitchen": 6,
+   "lift": 2,
+   "other": 2,
+   "shaft_or_riser": 2,
+   "stair": 1,
+   "storage": 1,
+   "unknown": 2
+  },
+  "n_review_required": 50,
+  "n_unknown": 2,
+  "largest_room": {
+   "id": "room-0050",
+   "type": "communal_or_shared_space",
+   "m2": 37.6
+  },
+  "unit_id_proxy": {
+   "bedroom": {
+    "n": 39,
+    "isolated_correct": 37,
+    "counts": {
+     "missed": 2,
+     "ok": 37
+    }
+   },
+   "kitchen": {
+    "n": 7,
+    "isolated_correct": 6,
+    "counts": {
+     "missed": 1,
+     "ok": 6
+    }
+   }
+  },
+  "named_spaces": {
+   "ok": 7,
+   "checked": 8,
+   "tutor_flat_group": {
+    "n_rooms": 2,
+    "area_m2": 25.9,
+    "plausible_25_80": true
+   },
+   "failing": {
+    "tutor_flat": [
+     "implausible_area:13.9m2"
+    ]
+   },
+   "passing": [
+    "aov",
+    "core03_lobby",
+    "lift04",
+    "lift05",
+    "riser",
+    "stair",
+    "store"
+   ]
+  },
+  "bedroom_consistency": {
+   "TYPEB503": {
+    "n": 7,
+    "cv": 0.077,
+    "outliers_gt10pct": 2
+   },
+   "TYPEB703": {
+    "n": 24,
+    "cv": 0.007,
+    "outliers_gt10pct": 0
+   }
+  },
+  "pockets_touching_bedroom": 0,
+  "geometry": {
+   "n_rooms": 109,
+   "invalid_polygons": 0,
+   "pairs_overlapping_gt_2pct": 0,
+   "rooms_with_holes": 0
+  },
+  "boundary_fit": {
+   "mean_frac_boundary_gt3pt_from_wall": 0.123,
+   "max_wall_ink_fraction_inside": 0.1134
+  },
+  "coordinates": {
+   "mean_median_px_boundary_to_ink": 0.81,
+   "max_abs_px_vs_pt_x_scale": 0.055
+  },
+  "elements": {
+   "door": 105,
+   "window": 62,
+   "column": 36,
+   "wall": 54
+  },
+  "bathrooms_without_host_room": 2,
+  "runtime_s": 32.6,
+  "peak_ram_mb": 2081
+ },
+ "panels": [
+  "core_lobby_stair_riser_aov.png",
+  "wing_5bed_cluster.png",
+  "wing_pod_pockets_closeup.png",
+  "east_end.png",
+  "south_facade_windows.png",
+  "annex_pods.png"
+ ]
+}

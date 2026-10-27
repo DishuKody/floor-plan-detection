@@ -1,0 +1,16 @@
+matplotlib==3.11.2
+numpy==2.4.6
+onnxruntime==1.31.0   # CPU-only reference; the GPU env uses onnxruntime-gpu==1.23.2 (requirements-gpu.txt)
+opencv-python-headless==5.0.0.93
+pillow==13.0.0
+psutil==7.2.2
+pyclipper==1.4.0
+pymupdf==2.0
+pymupdf-layout==2.0
+pymupdf4llm==2.0
+pytest==9.1.1
+pyyaml==6.0.3
+rapidocr-onnxruntime==1.4.4
+scikit-image==0.26.0
+scipy==1.17.1
+shapely==2.2.0

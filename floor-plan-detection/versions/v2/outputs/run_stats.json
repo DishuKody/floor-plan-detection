@@ -1,0 +1,26 @@
+{
+ "runtime_s": 24.4,
+ "n_rooms": 107,
+ "by_type": {
+  "kitchen": 6,
+  "bedroom": 38,
+  "bathroom": 39,
+  "corridor_or_hallway": 11,
+  "stair": 1,
+  "unknown": 4,
+  "shaft_or_riser": 2,
+  "communal_or_shared_space": 1,
+  "lift": 2,
+  "other": 2,
+  "storage": 1
+ },
+ "n_elements": {
+  "door": 105,
+  "window": 14,
+  "column": 36,
+  "wall": 54
+ },
+ "peak_ram_mb": 998,
+ "gpu_used": false,
+ "note": "vector path is CPU-only; no neural network inference except CPU OCR (RapidOCR/ONNX)"
+}

@@ -1,0 +1,20 @@
+# Canonical room classes. `keywords` are matched (case-insensitive, whole word / prefix) against OCR text found inside a room.
+# Order matters: first match wins. Types without keywords are assigned by geometry / fixture rules only.
+classes:
+  bedroom:       {color: [66, 133, 244],  keywords: ["type b"]}
+  bathroom:      {color: [0, 188, 212],   keywords: ["bath", "shower", "en-suite", "ensuite"]}
+  toilet_or_wc:  {color: [38, 166, 154],  keywords: ["wc", "w.c", "toilet"]}
+  kitchen:       {color: [255, 167, 38],  keywords: ["type k", "kitchen"]}
+  living_room:   {color: [171, 71, 188],  keywords: ["living", "lounge"]}
+  dining_room:   {color: [255, 112, 67],  keywords: ["dining"]}
+  corridor_or_hallway: {color: [189, 189, 189], keywords: ["corridor", "hall", "lobby", "cluster"]}
+  study_or_office: {color: [141, 110, 99], keywords: ["office", "study"]}
+  storage:       {color: [158, 157, 36],  keywords: ["store", "storage"]}
+  laundry_or_utility: {color: [121, 134, 203], keywords: ["clnrs", "cleaner", "laundry", "utility"]}
+  stair:         {color: [244, 67, 54],   keywords: ["stair"]}
+  lift:          {color: [233, 30, 99],   keywords: ["lift"]}
+  shaft_or_riser: {color: [96, 125, 139], keywords: ["riser", "aov", "shaft", "duct"]}
+  balcony:       {color: [129, 199, 132], keywords: ["balcony", "veranda"]}
+  communal_or_shared_space: {color: [255, 213, 79], keywords: ["core", "communal", "shared"]}
+  other:         {color: [200, 200, 200], keywords: ["type tu", "tutor"]}   # tutor flat (self-contained unit)
+  unknown:       {color: [255, 255, 255], keywords: []}

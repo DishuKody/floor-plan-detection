@@ -1,0 +1,46 @@
+{
+ "mode": "raster",
+ "device": "cuda",
+ "device_info": {
+  "name": "NVIDIA GeForce RTX 2050",
+  "capability": "8.6",
+  "vram_total_mb": 4096,
+  "vram_free_mb": 3300,
+  "torch": "2.11.0+cu128",
+  "cuda_runtime": "12.8"
+ },
+ "ocr_providers": {
+  "text_det.infer.session": [
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "text_cls.infer.session": [
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "text_rec.session.session": [
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ]
+ },
+ "runtime_s": 5.3,
+ "n_rooms": 7,
+ "by_type": {
+  "kitchen": 1,
+  "bedroom": 2,
+  "dining_room": 1,
+  "bathroom": 1,
+  "living_room": 1,
+  "balcony": 1
+ },
+ "n_elements": {
+  "door": 3,
+  "wall": 20
+ },
+ "ocr_boxes": 12,
+ "room_label_boxes": 7,
+ "rooms_with_printed_area": 4,
+ "implied_m2_per_px2": 0.00020297206402640592,
+ "printed_area_ratio_cv_pct": 132.9,
+ "note": "classical CV + OCR; no trained room model, so no per-room probabilities"
+}

@@ -1,0 +1,3705 @@
+{
+ "image": {
+  "width": 3576,
+  "height": 2526,
+  "coordinate_origin": "top_left",
+  "units": "pixels",
+  "transform": {
+   "type": "pdf_page_render",
+   "scale_px_per_pt": 1.5,
+   "page_rotation_applied_deg": 270,
+   "page_size_pt": [
+    2384.0,
+    1684.0
+   ],
+   "pt_to_px": "px = pt * scale_px_per_pt"
+  },
+  "note": "Pixel coordinates refer to the page rendered at scale_px_per_pt (outputs/debug/render_reference.png). approx_area_m2 assumes the printed scale 1:100 (read from the title block, A1 sheet) and is only approximate."
+ },
+ "elements": [
+  {
+   "type": "door",
+   "hinge_pt": [
+    982.21,
+    464.66
+   ],
+   "leaf_radius_pt": 13.55,
+   "swing_sweep_deg": 94.2,
+   "opening_pt": [
+    [
+     982.21,
+     464.66
+    ],
+    [
+     981.72,
+     451.12
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     981.72,
+     451.12
+    ],
+    [
+     995.76,
+     465.16
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    866.99,
+    464.66
+   ],
+   "leaf_radius_pt": 13.55,
+   "swing_sweep_deg": 94.2,
+   "opening_pt": [
+    [
+     866.99,
+     464.66
+    ],
+    [
+     867.48,
+     451.12
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     867.48,
+     451.12
+    ],
+    [
+     853.44,
+     465.16
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1722.56,
+    1006.52
+   ],
+   "leaf_radius_pt": 13.25,
+   "swing_sweep_deg": 95.9,
+   "opening_pt": [
+    [
+     1722.56,
+     1006.52
+    ],
+    [
+     1721.88,
+     993.28
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1735.8,
+     1007.2
+    ],
+    [
+     1721.88,
+     993.28
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1619.19,
+    1100.35
+   ],
+   "leaf_radius_pt": 13.42,
+   "swing_sweep_deg": 95.4,
+   "opening_pt": [
+    [
+     1619.19,
+     1100.35
+    ],
+    [
+     1632.6,
+     1099.72
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1632.6,
+     1099.72
+    ],
+    [
+     1618.56,
+     1113.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1619.19,
+    1023.49
+   ],
+   "leaf_radius_pt": 13.42,
+   "swing_sweep_deg": 95.4,
+   "opening_pt": [
+    [
+     1619.19,
+     1023.49
+    ],
+    [
+     1632.6,
+     1024.12
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1632.6,
+     1024.12
+    ],
+    [
+     1618.56,
+     1010.08
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    230.01,
+    1100.35
+   ],
+   "leaf_radius_pt": 13.42,
+   "swing_sweep_deg": 95.4,
+   "opening_pt": [
+    [
+     230.01,
+     1100.35
+    ],
+    [
+     216.61,
+     1099.72
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     216.61,
+     1099.72
+    ],
+    [
+     230.65,
+     1113.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    230.01,
+    1023.49
+   ],
+   "leaf_radius_pt": 13.42,
+   "swing_sweep_deg": 95.4,
+   "opening_pt": [
+    [
+     230.01,
+     1023.49
+    ],
+    [
+     216.61,
+     1024.12
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     216.61,
+     1024.12
+    ],
+    [
+     230.65,
+     1010.08
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    77.12,
+    1188.09
+   ],
+   "leaf_radius_pt": 13.49,
+   "swing_sweep_deg": 94.6,
+   "opening_pt": [
+    [
+     77.12,
+     1188.09
+    ],
+    [
+     63.6,
+     1188.64
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     77.64,
+     1174.6
+    ],
+    [
+     63.6,
+     1188.64
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    724.29,
+    1029.87
+   ],
+   "leaf_radius_pt": 26.05,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     724.29,
+     1029.87
+    ],
+    [
+     750.36,
+     1030.36
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     722.88,
+     1055.92
+    ],
+    [
+     750.36,
+     1030.36
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    724.24,
+    1094.02
+   ],
+   "leaf_radius_pt": 26.11,
+   "swing_sweep_deg": 91.8,
+   "opening_pt": [
+    [
+     724.24,
+     1094.02
+    ],
+    [
+     750.36,
+     1093.48
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     750.36,
+     1093.48
+    ],
+    [
+     722.88,
+     1067.92
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    892.92,
+    849.82
+   ],
+   "leaf_radius_pt": 26.03,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     892.92,
+     849.82
+    ],
+    [
+     893.4,
+     875.8
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     893.4,
+     875.8
+    ],
+    [
+     918.96,
+     848.44
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    956.28,
+    849.83
+   ],
+   "leaf_radius_pt": 26.03,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     956.28,
+     849.83
+    ],
+    [
+     955.8,
+     875.8
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     930.24,
+     848.44
+    ],
+    [
+     955.8,
+     875.8
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1124.98,
+    1094.03
+   ],
+   "leaf_radius_pt": 26.12,
+   "swing_sweep_deg": 91.8,
+   "opening_pt": [
+    [
+     1124.98,
+     1094.03
+    ],
+    [
+     1098.84,
+     1093.48
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1126.32,
+     1067.92
+    ],
+    [
+     1098.84,
+     1093.48
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1124.97,
+    1029.82
+   ],
+   "leaf_radius_pt": 26.11,
+   "swing_sweep_deg": 91.8,
+   "opening_pt": [
+    [
+     1124.97,
+     1029.82
+    ],
+    [
+     1098.84,
+     1030.36
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1098.84,
+     1030.36
+    ],
+    [
+     1126.32,
+     1055.92
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    753.82,
+    1027.19
+   ],
+   "leaf_radius_pt": 14.81,
+   "swing_sweep_deg": 89.9,
+   "opening_pt": [
+    [
+     753.82,
+     1027.19
+    ],
+    [
+     753.01,
+     1042.0
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     753.01,
+     1042.0
+    ],
+    [
+     739.08,
+     1026.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    753.82,
+    1096.65
+   ],
+   "leaf_radius_pt": 14.81,
+   "swing_sweep_deg": 89.9,
+   "opening_pt": [
+    [
+     753.82,
+     1096.65
+    ],
+    [
+     753.01,
+     1081.84
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     739.08,
+     1097.44
+    ],
+    [
+     753.01,
+     1081.84
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    959.17,
+    1096.6
+   ],
+   "leaf_radius_pt": 14.78,
+   "swing_sweep_deg": 90.4,
+   "opening_pt": [
+    [
+     959.17,
+     1096.6
+    ],
+    [
+     958.44,
+     1081.84
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     958.44,
+     1081.84
+    ],
+    [
+     944.4,
+     1097.44
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    886.23,
+    1012.81
+   ],
+   "leaf_radius_pt": 26.07,
+   "swing_sweep_deg": 90.0,
+   "opening_pt": [
+    [
+     886.23,
+     1012.81
+    ],
+    [
+     887.64,
+     986.8
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     887.64,
+     986.8
+    ],
+    [
+     860.16,
+     1011.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    872.37,
+    1102.8
+   ],
+   "leaf_radius_pt": 25.96,
+   "swing_sweep_deg": 92.7,
+   "opening_pt": [
+    [
+     872.37,
+     1102.8
+    ],
+    [
+     872.04,
+     1128.76
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     846.48,
+     1101.28
+    ],
+    [
+     872.04,
+     1128.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    882.31,
+    1131.33
+   ],
+   "leaf_radius_pt": 26.11,
+   "swing_sweep_deg": 91.8,
+   "opening_pt": [
+    [
+     882.31,
+     1131.33
+    ],
+    [
+     880.92,
+     1157.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     880.92,
+     1157.44
+    ],
+    [
+     908.4,
+     1131.88
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    842.26,
+    1131.36
+   ],
+   "leaf_radius_pt": 26.07,
+   "swing_sweep_deg": 91.8,
+   "opening_pt": [
+    [
+     842.26,
+     1131.36
+    ],
+    [
+     843.6,
+     1157.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     816.24,
+     1131.88
+    ],
+    [
+     843.6,
+     1157.44
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    607.87,
+    1102.86
+   ],
+   "leaf_radius_pt": 25.93,
+   "swing_sweep_deg": 92.3,
+   "opening_pt": [
+    [
+     607.87,
+     1102.86
+    ],
+    [
+     582.0,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     582.0,
+     1101.4
+    ],
+    [
+     607.45,
+     1128.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    462.16,
+    1102.74
+   ],
+   "leaf_radius_pt": 26.07,
+   "swing_sweep_deg": 91.8,
+   "opening_pt": [
+    [
+     462.16,
+     1102.74
+    ],
+    [
+     436.08,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     436.08,
+     1101.4
+    ],
+    [
+     461.64,
+     1128.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    316.32,
+    1102.79
+   ],
+   "leaf_radius_pt": 26.02,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     316.32,
+     1102.79
+    ],
+    [
+     290.29,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     290.29,
+     1101.4
+    ],
+    [
+     315.84,
+     1128.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    327.16,
+    1102.77
+   ],
+   "leaf_radius_pt": 26.04,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     327.16,
+     1102.77
+    ],
+    [
+     353.17,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     327.6,
+     1128.76
+    ],
+    [
+     353.17,
+     1101.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    472.93,
+    1102.75
+   ],
+   "leaf_radius_pt": 26.07,
+   "swing_sweep_deg": 91.9,
+   "opening_pt": [
+    [
+     472.93,
+     1102.75
+    ],
+    [
+     498.97,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     473.41,
+     1128.76
+    ],
+    [
+     498.97,
+     1101.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    618.75,
+    1102.77
+   ],
+   "leaf_radius_pt": 26.04,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     618.75,
+     1102.77
+    ],
+    [
+     644.76,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     619.2,
+     1128.76
+    ],
+    [
+     644.76,
+     1101.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    690.2,
+    1102.79
+   ],
+   "leaf_radius_pt": 26.02,
+   "swing_sweep_deg": 92.2,
+   "opening_pt": [
+    [
+     690.2,
+     1102.79
+    ],
+    [
+     716.17,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     690.6,
+     1128.76
+    ],
+    [
+     716.17,
+     1101.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    618.75,
+    1021.07
+   ],
+   "leaf_radius_pt": 26.04,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     618.75,
+     1021.07
+    ],
+    [
+     644.76,
+     1022.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     644.76,
+     1022.44
+    ],
+    [
+     619.2,
+     995.08
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    607.87,
+    1020.98
+   ],
+   "leaf_radius_pt": 25.93,
+   "swing_sweep_deg": 92.3,
+   "opening_pt": [
+    [
+     607.87,
+     1020.98
+    ],
+    [
+     582.0,
+     1022.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     607.45,
+     995.08
+    ],
+    [
+     582.0,
+     1022.44
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    462.16,
+    1021.1
+   ],
+   "leaf_radius_pt": 26.07,
+   "swing_sweep_deg": 91.8,
+   "opening_pt": [
+    [
+     462.16,
+     1021.1
+    ],
+    [
+     436.08,
+     1022.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     461.64,
+     995.08
+    ],
+    [
+     436.08,
+     1022.44
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    316.32,
+    1021.05
+   ],
+   "leaf_radius_pt": 26.02,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     316.32,
+     1021.05
+    ],
+    [
+     290.29,
+     1022.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     315.84,
+     995.08
+    ],
+    [
+     290.29,
+     1022.44
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    327.16,
+    1021.07
+   ],
+   "leaf_radius_pt": 26.04,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     327.16,
+     1021.07
+    ],
+    [
+     353.17,
+     1022.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     353.17,
+     1022.44
+    ],
+    [
+     327.6,
+     995.08
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    472.93,
+    1021.1
+   ],
+   "leaf_radius_pt": 26.07,
+   "swing_sweep_deg": 91.9,
+   "opening_pt": [
+    [
+     472.93,
+     1021.1
+    ],
+    [
+     498.97,
+     1022.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     498.97,
+     1022.44
+    ],
+    [
+     473.41,
+     995.08
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    690.21,
+    1021.05
+   ],
+   "leaf_radius_pt": 26.02,
+   "swing_sweep_deg": 92.2,
+   "opening_pt": [
+    [
+     690.21,
+     1021.05
+    ],
+    [
+     716.17,
+     1022.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     716.17,
+     1022.44
+    ],
+    [
+     690.6,
+     995.08
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1241.33,
+    1021.01
+   ],
+   "leaf_radius_pt": 25.94,
+   "swing_sweep_deg": 92.8,
+   "opening_pt": [
+    [
+     1241.33,
+     1021.01
+    ],
+    [
+     1267.2,
+     1022.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1267.2,
+     1022.56
+    ],
+    [
+     1241.64,
+     995.08
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1522.08,
+    1021.12
+   ],
+   "leaf_radius_pt": 26.08,
+   "swing_sweep_deg": 92.1,
+   "opening_pt": [
+    [
+     1522.08,
+     1021.12
+    ],
+    [
+     1496.04,
+     1022.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1521.6,
+     995.08
+    ],
+    [
+     1496.04,
+     1022.56
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1522.06,
+    1102.76
+   ],
+   "leaf_radius_pt": 26.05,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     1522.06,
+     1102.76
+    ],
+    [
+     1496.04,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1496.04,
+     1101.4
+    ],
+    [
+     1521.6,
+     1128.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1532.84,
+    1102.74
+   ],
+   "leaf_radius_pt": 26.07,
+   "swing_sweep_deg": 91.8,
+   "opening_pt": [
+    [
+     1532.84,
+     1102.74
+    ],
+    [
+     1558.92,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1533.36,
+     1128.76
+    ],
+    [
+     1558.92,
+     1101.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1387.15,
+    1102.87
+   ],
+   "leaf_radius_pt": 25.92,
+   "swing_sweep_deg": 92.3,
+   "opening_pt": [
+    [
+     1387.15,
+     1102.87
+    ],
+    [
+     1413.0,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1387.56,
+     1128.76
+    ],
+    [
+     1413.0,
+     1101.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1241.35,
+    1102.88
+   ],
+   "leaf_radius_pt": 25.92,
+   "swing_sweep_deg": 92.6,
+   "opening_pt": [
+    [
+     1241.35,
+     1102.88
+    ],
+    [
+     1267.2,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1241.64,
+     1128.76
+    ],
+    [
+     1267.2,
+     1101.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1376.26,
+    1102.76
+   ],
+   "leaf_radius_pt": 26.05,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     1376.26,
+     1102.76
+    ],
+    [
+     1350.24,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1350.24,
+     1101.4
+    ],
+    [
+     1375.8,
+     1128.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1230.46,
+    1102.76
+   ],
+   "leaf_radius_pt": 26.05,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     1230.46,
+     1102.76
+    ],
+    [
+     1204.44,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1204.44,
+     1101.4
+    ],
+    [
+     1230.0,
+     1128.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1158.97,
+    1102.8
+   ],
+   "leaf_radius_pt": 26.0,
+   "swing_sweep_deg": 92.3,
+   "opening_pt": [
+    [
+     1158.97,
+     1102.8
+    ],
+    [
+     1133.04,
+     1101.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1133.04,
+     1101.4
+    ],
+    [
+     1158.6,
+     1128.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1376.28,
+    1021.12
+   ],
+   "leaf_radius_pt": 26.08,
+   "swing_sweep_deg": 92.1,
+   "opening_pt": [
+    [
+     1376.28,
+     1021.12
+    ],
+    [
+     1350.24,
+     1022.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1375.8,
+     995.08
+    ],
+    [
+     1350.24,
+     1022.56
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1230.48,
+    1021.12
+   ],
+   "leaf_radius_pt": 26.08,
+   "swing_sweep_deg": 92.1,
+   "opening_pt": [
+    [
+     1230.48,
+     1021.12
+    ],
+    [
+     1204.44,
+     1022.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1230.0,
+     995.08
+    ],
+    [
+     1204.44,
+     1022.56
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1158.99,
+    1021.08
+   ],
+   "leaf_radius_pt": 26.02,
+   "swing_sweep_deg": 92.4,
+   "opening_pt": [
+    [
+     1158.99,
+     1021.08
+    ],
+    [
+     1133.04,
+     1022.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1158.6,
+     995.08
+    ],
+    [
+     1133.04,
+     1022.56
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1387.13,
+    1021.01
+   ],
+   "leaf_radius_pt": 25.94,
+   "swing_sweep_deg": 92.5,
+   "opening_pt": [
+    [
+     1387.13,
+     1021.01
+    ],
+    [
+     1413.0,
+     1022.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1413.0,
+     1022.56
+    ],
+    [
+     1387.56,
+     995.08
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1532.83,
+    1021.14
+   ],
+   "leaf_radius_pt": 26.1,
+   "swing_sweep_deg": 91.9,
+   "opening_pt": [
+    [
+     1532.83,
+     1021.14
+    ],
+    [
+     1558.92,
+     1022.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1558.92,
+     1022.56
+    ],
+    [
+     1533.36,
+     995.08
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    286.19,
+    1054.53
+   ],
+   "leaf_radius_pt": 26.03,
+   "swing_sweep_deg": 90.2,
+   "opening_pt": [
+    [
+     286.19,
+     1054.53
+    ],
+    [
+     287.64,
+     1028.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     287.64,
+     1028.56
+    ],
+    [
+     260.16,
+     1053.16
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    286.23,
+    1069.27
+   ],
+   "leaf_radius_pt": 26.08,
+   "swing_sweep_deg": 90.0,
+   "opening_pt": [
+    [
+     286.23,
+     1069.27
+    ],
+    [
+     287.64,
+     1095.28
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     260.16,
+     1070.68
+    ],
+    [
+     287.64,
+     1095.28
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    930.54,
+    481.89
+   ],
+   "leaf_radius_pt": 26.1,
+   "swing_sweep_deg": 89.8,
+   "opening_pt": [
+    [
+     930.54,
+     481.89
+    ],
+    [
+     956.64,
+     483.28
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     956.64,
+     483.28
+    ],
+    [
+     932.04,
+     455.8
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    918.67,
+    481.89
+   ],
+   "leaf_radius_pt": 26.11,
+   "swing_sweep_deg": 89.8,
+   "opening_pt": [
+    [
+     918.67,
+     481.89
+    ],
+    [
+     892.56,
+     483.28
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     917.16,
+     455.8
+    ],
+    [
+     892.56,
+     483.28
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1562.97,
+    1069.27
+   ],
+   "leaf_radius_pt": 26.07,
+   "swing_sweep_deg": 90.0,
+   "opening_pt": [
+    [
+     1562.97,
+     1069.27
+    ],
+    [
+     1561.56,
+     1095.28
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1561.56,
+     1095.28
+    ],
+    [
+     1589.04,
+     1070.68
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1563.02,
+    1054.53
+   ],
+   "leaf_radius_pt": 26.03,
+   "swing_sweep_deg": 90.2,
+   "opening_pt": [
+    [
+     1563.02,
+     1054.53
+    ],
+    [
+     1561.56,
+     1028.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1589.04,
+     1053.16
+    ],
+    [
+     1561.56,
+     1028.56
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1595.7,
+    1024.25
+   ],
+   "leaf_radius_pt": 14.8,
+   "swing_sweep_deg": 90.3,
+   "opening_pt": [
+    [
+     1595.7,
+     1024.25
+    ],
+    [
+     1580.88,
+     1023.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1580.88,
+     1023.4
+    ],
+    [
+     1594.92,
+     1039.0
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1595.7,
+    1099.59
+   ],
+   "leaf_radius_pt": 14.8,
+   "swing_sweep_deg": 90.3,
+   "opening_pt": [
+    [
+     1595.7,
+     1099.59
+    ],
+    [
+     1580.88,
+     1100.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1594.92,
+     1084.84
+    ],
+    [
+     1580.88,
+     1100.44
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1167.71,
+    1099.48
+   ],
+   "leaf_radius_pt": 14.66,
+   "swing_sweep_deg": 91.4,
+   "opening_pt": [
+    [
+     1167.71,
+     1099.48
+    ],
+    [
+     1182.36,
+     1100.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1168.32,
+     1084.84
+    ],
+    [
+     1182.36,
+     1100.44
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    253.51,
+    1024.26
+   ],
+   "leaf_radius_pt": 14.79,
+   "swing_sweep_deg": 90.4,
+   "opening_pt": [
+    [
+     253.51,
+     1024.26
+    ],
+    [
+     268.32,
+     1023.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     254.28,
+     1039.0
+    ],
+    [
+     268.32,
+     1023.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    681.5,
+    1024.36
+   ],
+   "leaf_radius_pt": 14.66,
+   "swing_sweep_deg": 91.3,
+   "opening_pt": [
+    [
+     681.5,
+     1024.36
+    ],
+    [
+     666.84,
+     1023.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     680.88,
+     1039.0
+    ],
+    [
+     666.84,
+     1023.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    681.5,
+    1099.48
+   ],
+   "leaf_radius_pt": 14.66,
+   "swing_sweep_deg": 91.4,
+   "opening_pt": [
+    [
+     681.5,
+     1099.48
+    ],
+    [
+     666.84,
+     1100.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     666.84,
+     1100.44
+    ],
+    [
+     680.88,
+     1084.84
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    253.51,
+    1099.58
+   ],
+   "leaf_radius_pt": 14.78,
+   "swing_sweep_deg": 90.4,
+   "opening_pt": [
+    [
+     253.51,
+     1099.58
+    ],
+    [
+     268.32,
+     1100.44
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     268.32,
+     1100.44
+    ],
+    [
+     254.28,
+     1084.84
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1843.94,
+    901.11
+   ],
+   "leaf_radius_pt": 25.97,
+   "swing_sweep_deg": 92.4,
+   "opening_pt": [
+    [
+     1843.94,
+     901.11
+    ],
+    [
+     1845.36,
+     875.2
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1845.36,
+     875.2
+    ],
+    [
+     1818.0,
+     900.76
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1094.75,
+    1096.64
+   ],
+   "leaf_radius_pt": 14.8,
+   "swing_sweep_deg": 90.3,
+   "opening_pt": [
+    [
+     1094.75,
+     1096.64
+    ],
+    [
+     1095.48,
+     1081.84
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1095.48,
+     1081.84
+    ],
+    [
+     1109.52,
+     1097.44
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1095.09,
+    1027.2
+   ],
+   "leaf_radius_pt": 14.81,
+   "swing_sweep_deg": 90.2,
+   "opening_pt": [
+    [
+     1095.09,
+     1027.2
+    ],
+    [
+     1095.84,
+     1042.0
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1109.88,
+     1026.4
+    ],
+    [
+     1095.84,
+     1042.0
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1167.71,
+    1024.36
+   ],
+   "leaf_radius_pt": 14.66,
+   "swing_sweep_deg": 91.3,
+   "opening_pt": [
+    [
+     1167.71,
+     1024.36
+    ],
+    [
+     1182.36,
+     1023.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1182.36,
+     1023.4
+    ],
+    [
+     1168.32,
+     1039.0
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1083.22,
+    1102.77
+   ],
+   "leaf_radius_pt": 26.07,
+   "swing_sweep_deg": 89.6,
+   "opening_pt": [
+    [
+     1083.22,
+     1102.77
+    ],
+    [
+     1081.68,
+     1128.76
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1081.68,
+     1128.76
+    ],
+    [
+     1057.2,
+     1101.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1006.14,
+    992.31
+   ],
+   "leaf_radius_pt": 26.17,
+   "swing_sweep_deg": 89.3,
+   "opening_pt": [
+    [
+     1006.14,
+     992.31
+    ],
+    [
+     980.04,
+     993.88
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     980.04,
+     993.88
+    ],
+    [
+     1007.4,
+     1018.48
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    46.87,
+    1045.78
+   ],
+   "leaf_radius_pt": 25.97,
+   "swing_sweep_deg": 91.9,
+   "opening_pt": [
+    [
+     46.87,
+     1045.78
+    ],
+    [
+     65.65,
+     1063.72
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     65.65,
+     1063.72
+    ],
+    [
+     64.2,
+     1026.4
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    780.9,
+    1178.81
+   ],
+   "leaf_radius_pt": 13.4,
+   "swing_sweep_deg": 94.8,
+   "opening_pt": [
+    [
+     780.9,
+     1178.81
+    ],
+    [
+     794.28,
+     1179.4
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     794.28,
+     1179.4
+    ],
+    [
+     780.36,
+     1165.36
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1464.78,
+    1099.54
+   ],
+   "leaf_radius_pt": 20.43,
+   "swing_sweep_deg": 82.3,
+   "opening_pt": [
+    [
+     1464.78,
+     1099.54
+    ],
+    [
+     1444.32,
+     1099.72
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1444.32,
+     1099.72
+    ],
+    [
+     1461.84,
+     1079.32
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    1318.93,
+    1099.55
+   ],
+   "leaf_radius_pt": 20.39,
+   "swing_sweep_deg": 82.4,
+   "opening_pt": [
+    [
+     1318.93,
+     1099.55
+    ],
+    [
+     1298.52,
+     1099.72
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     1298.52,
+     1099.72
+    ],
+    [
+     1316.04,
+     1079.32
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    530.25,
+    1024.3
+   ],
+   "leaf_radius_pt": 20.39,
+   "swing_sweep_deg": 82.3,
+   "opening_pt": [
+    [
+     530.25,
+     1024.3
+    ],
+    [
+     550.68,
+     1024.12
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     550.68,
+     1024.12
+    ],
+    [
+     533.16,
+     1044.52
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    384.46,
+    1024.3
+   ],
+   "leaf_radius_pt": 20.39,
+   "swing_sweep_deg": 82.3,
+   "opening_pt": [
+    [
+     384.46,
+     1024.3
+    ],
+    [
+     404.88,
+     1024.12
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     404.88,
+     1024.12
+    ],
+    [
+     387.36,
+     1044.52
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    978.69,
+    1096.52
+   ],
+   "leaf_radius_pt": 20.31,
+   "swing_sweep_deg": 90.1,
+   "opening_pt": [
+    [
+     978.69,
+     1096.52
+    ],
+    [
+     978.72,
+     1076.2
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     999.0,
+     1096.6
+    ],
+    [
+     978.72,
+     1076.2
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    889.84,
+    873.36
+   ],
+   "leaf_radius_pt": 14.86,
+   "swing_sweep_deg": 89.8,
+   "opening_pt": [
+    [
+     889.84,
+     873.36
+    ],
+    [
+     904.68,
+     872.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     889.08,
+     858.52
+    ],
+    [
+     904.68,
+     872.56
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    883.71,
+    714.87
+   ],
+   "leaf_radius_pt": 25.98,
+   "swing_sweep_deg": 92.6,
+   "opening_pt": [
+    [
+     883.71,
+     714.87
+    ],
+    [
+     885.24,
+     688.96
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     885.24,
+     688.96
+    ],
+    [
+     857.76,
+     714.52
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    883.75,
+    557.8
+   ],
+   "leaf_radius_pt": 26.04,
+   "swing_sweep_deg": 92.2,
+   "opening_pt": [
+    [
+     883.75,
+     557.8
+    ],
+    [
+     885.24,
+     531.76
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     885.24,
+     531.76
+    ],
+    [
+     857.76,
+     557.32
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    883.75,
+    801.76
+   ],
+   "leaf_radius_pt": 26.04,
+   "swing_sweep_deg": 92.2,
+   "opening_pt": [
+    [
+     883.75,
+     801.76
+    ],
+    [
+     885.24,
+     827.8
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     857.76,
+     802.24
+    ],
+    [
+     885.24,
+     827.8
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    883.75,
+    723.28
+   ],
+   "leaf_radius_pt": 26.04,
+   "swing_sweep_deg": 92.2,
+   "opening_pt": [
+    [
+     883.75,
+     723.28
+    ],
+    [
+     885.24,
+     749.32
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     857.76,
+     723.76
+    ],
+    [
+     885.24,
+     749.32
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    883.8,
+    566.27
+   ],
+   "leaf_radius_pt": 26.14,
+   "swing_sweep_deg": 91.7,
+   "opening_pt": [
+    [
+     883.8,
+     566.27
+    ],
+    [
+     885.12,
+     592.36
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     857.64,
+     566.8
+    ],
+    [
+     885.12,
+     592.36
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    886.98,
+    792.73
+   ],
+   "leaf_radius_pt": 14.74,
+   "swing_sweep_deg": 90.8,
+   "opening_pt": [
+    [
+     886.98,
+     792.73
+    ],
+    [
+     886.08,
+     778.0
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     886.08,
+     778.0
+    ],
+    [
+     901.68,
+     792.04
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    886.97,
+    488.27
+   ],
+   "leaf_radius_pt": 14.74,
+   "swing_sweep_deg": 90.5,
+   "opening_pt": [
+    [
+     886.97,
+     488.27
+    ],
+    [
+     886.08,
+     502.96
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     886.08,
+     502.96
+    ],
+    [
+     901.68,
+     489.04
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    959.37,
+    873.36
+   ],
+   "leaf_radius_pt": 14.86,
+   "swing_sweep_deg": 89.8,
+   "opening_pt": [
+    [
+     959.37,
+     873.36
+    ],
+    [
+     944.52,
+     872.56
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     960.12,
+     858.52
+    ],
+    [
+     944.52,
+     872.56
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    965.51,
+    714.87
+   ],
+   "leaf_radius_pt": 25.97,
+   "swing_sweep_deg": 92.4,
+   "opening_pt": [
+    [
+     965.51,
+     714.87
+    ],
+    [
+     964.08,
+     688.96
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     964.08,
+     688.96
+    ],
+    [
+     991.44,
+     714.52
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    965.47,
+    557.8
+   ],
+   "leaf_radius_pt": 26.03,
+   "swing_sweep_deg": 92.0,
+   "opening_pt": [
+    [
+     965.47,
+     557.8
+    ],
+    [
+     964.08,
+     531.76
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     964.08,
+     531.76
+    ],
+    [
+     991.44,
+     557.32
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    965.42,
+    801.74
+   ],
+   "leaf_radius_pt": 26.06,
+   "swing_sweep_deg": 92.1,
+   "opening_pt": [
+    [
+     965.42,
+     801.74
+    ],
+    [
+     963.96,
+     827.8
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     991.44,
+     802.24
+    ],
+    [
+     963.96,
+     827.8
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    965.43,
+    723.27
+   ],
+   "leaf_radius_pt": 26.05,
+   "swing_sweep_deg": 92.1,
+   "opening_pt": [
+    [
+     965.43,
+     723.27
+    ],
+    [
+     963.96,
+     749.32
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     991.44,
+     723.76
+    ],
+    [
+     963.96,
+     749.32
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    965.45,
+    566.39
+   ],
+   "leaf_radius_pt": 26.02,
+   "swing_sweep_deg": 92.4,
+   "opening_pt": [
+    [
+     965.45,
+     566.39
+    ],
+    [
+     963.96,
+     592.36
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     991.44,
+     566.8
+    ],
+    [
+     963.96,
+     592.36
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    962.23,
+    792.73
+   ],
+   "leaf_radius_pt": 14.74,
+   "swing_sweep_deg": 90.8,
+   "opening_pt": [
+    [
+     962.23,
+     792.73
+    ],
+    [
+     963.12,
+     778.0
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     963.12,
+     778.0
+    ],
+    [
+     947.52,
+     792.04
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    962.24,
+    488.27
+   ],
+   "leaf_radius_pt": 14.74,
+   "swing_sweep_deg": 90.5,
+   "opening_pt": [
+    [
+     962.24,
+     488.27
+    ],
+    [
+     963.12,
+     502.96
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     963.12,
+     502.96
+    ],
+    [
+     947.52,
+     489.04
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "door",
+   "hinge_pt": [
+    962.34,
+    630.14
+   ],
+   "leaf_radius_pt": 20.53,
+   "swing_sweep_deg": 81.7,
+   "opening_pt": [
+    [
+     962.34,
+     630.14
+    ],
+    [
+     962.4,
+     650.68
+    ]
+   ],
+   "swing_arc_ends_pt": [
+    [
+     962.4,
+     650.68
+    ],
+    [
+     942.0,
+     633.16
+    ]
+   ],
+   "source": "vector:arc_fit"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    740.23,
+    376.18,
+    752.1,
+    385.18
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    740.23,
+    557.38,
+    752.1,
+    566.38
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    740.23,
+    714.46,
+    752.1,
+    723.46
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    146.59,
+    877.54,
+    155.58,
+    889.42
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    608.82,
+    877.54,
+    617.82,
+    889.42
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    463.01,
+    877.54,
+    472.02,
+    889.42
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    317.23,
+    877.54,
+    326.23,
+    889.42
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    136.99,
+    969.1,
+    145.99,
+    978.1
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    136.99,
+    1086.82,
+    145.99,
+    1095.82
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    873.3,
+    1104.94,
+    882.3,
+    1113.94
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    136.99,
+    1200.58,
+    145.99,
+    1209.58
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    146.59,
+    1234.42,
+    155.58,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    756.18,
+    1234.42,
+    765.18,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    608.82,
+    1234.42,
+    617.82,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    463.01,
+    1234.42,
+    472.02,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    317.23,
+    1234.42,
+    326.23,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    873.3,
+    1234.42,
+    882.3,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1097.22,
+    376.18,
+    1108.98,
+    385.18
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    920.1,
+    376.18,
+    929.1,
+    387.94
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1097.22,
+    557.38,
+    1108.98,
+    566.38
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    920.1,
+    556.06,
+    929.1,
+    567.82
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1097.22,
+    714.46,
+    1108.98,
+    723.46
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    920.1,
+    713.02,
+    929.1,
+    724.9
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1231.38,
+    877.54,
+    1240.38,
+    889.42
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1377.18,
+    877.54,
+    1386.18,
+    889.42
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    967.38,
+    1104.94,
+    976.38,
+    1113.94
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1084.02,
+    1234.42,
+    1093.02,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1231.38,
+    1234.42,
+    1240.38,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    967.38,
+    1234.42,
+    976.38,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1377.18,
+    1234.42,
+    1386.18,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1522.98,
+    877.54,
+    1531.98,
+    889.42
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1691.94,
+    877.54,
+    1700.94,
+    889.42
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1702.5,
+    901.3,
+    1714.26,
+    910.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1702.5,
+    1006.78,
+    1714.26,
+    1015.78
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1693.62,
+    1234.42,
+    1702.62,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "column",
+   "bbox_pt": [
+    1522.98,
+    1234.42,
+    1531.98,
+    1246.3
+   ],
+   "source": "vector:grey_fill"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     735.67,
+     376.44
+    ],
+    [
+     735.67,
+     399.08
+    ],
+    [
+     738.76,
+     399.08
+    ],
+    [
+     738.76,
+     376.44
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     735.67,
+     403.32
+    ],
+    [
+     735.67,
+     441.2
+    ],
+    [
+     738.28,
+     441.2
+    ],
+    [
+     738.28,
+     403.32
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     735.67,
+     492.6
+    ],
+    [
+     735.67,
+     529.64
+    ],
+    [
+     738.28,
+     529.64
+    ],
+    [
+     738.28,
+     492.6
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     735.67,
+     596.76
+    ],
+    [
+     735.67,
+     633.68
+    ],
+    [
+     738.28,
+     633.68
+    ],
+    [
+     738.28,
+     596.76
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     735.67,
+     675.6
+    ],
+    [
+     735.67,
+     712.64
+    ],
+    [
+     738.28,
+     712.64
+    ],
+    [
+     738.28,
+     675.6
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     735.67,
+     754.44
+    ],
+    [
+     735.67,
+     791.48
+    ],
+    [
+     738.28,
+     791.48
+    ],
+    [
+     738.28,
+     754.44
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     735.67,
+     808.08
+    ],
+    [
+     735.67,
+     845.12
+    ],
+    [
+     738.28,
+     845.12
+    ],
+    [
+     738.28,
+     808.08
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     158.48,
+     872.84
+    ],
+    [
+     230.2,
+     872.84
+    ],
+    [
+     230.2,
+     870.84
+    ],
+    [
+     158.48,
+     870.84
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     401.36,
+     872.84
+    ],
+    [
+     438.41,
+     872.84
+    ],
+    [
+     438.41,
+     870.84
+    ],
+    [
+     401.36,
+     870.84
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     499.16,
+     872.84
+    ],
+    [
+     536.21,
+     872.84
+    ],
+    [
+     536.21,
+     870.84
+    ],
+    [
+     499.16,
+     870.84
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     354.08,
+     873.56
+    ],
+    [
+     391.12,
+     873.56
+    ],
+    [
+     391.12,
+     871.56
+    ],
+    [
+     354.08,
+     871.56
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     974.0,
+     371.0
+    ],
+    [
+     1116.16,
+     371.0
+    ],
+    [
+     1116.16,
+     369.0
+    ],
+    [
+     974.0,
+     369.0
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     1314.56,
+     872.84
+    ],
+    [
+     1351.6,
+     872.84
+    ],
+    [
+     1351.6,
+     870.84
+    ],
+    [
+     1314.56,
+     870.84
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "window",
+   "polygon_pt": [
+    [
+     1608.08,
+     872.84
+    ],
+    [
+     1679.8,
+     872.84
+    ],
+    [
+     1679.8,
+     870.84
+    ],
+    [
+     1608.08,
+     870.84
+    ]
+   ],
+   "source": "vector:stroke_band"
+  },
+  {
+   "type": "wall",
+   "polygon_pt": [
+    [
+     934.5,
+     976.0
+    ],
+    [
+     932.5,
+     977.25
+    ],
+    [
+     937.75,
+     977.75
+    ],
+    [
+     938.75,
+     979.0
+    ],
+    [
+     938.75,
+     983.25
+    ],
+    [
+     937.25,
+     985.0
+    ],
+    [
+     932.75,
+     985.0
+    ],
+    [
+     934.0,
+     986.25
+    ],
+    [
+     937.25,
+     986.5
+    ],
+    [
+     939.0,
+     985.5
+    ],
+    [
+     944.5,
+     986.25
+    ],
+    [
+     945.0,
+     978.5
+    ],
+    [
+     948.75,
+     978.75
+    ],
+    [
+     948.75,
+     982.5
+    ],
+    [
+     949.75,
+     985.0
+    ],
+    [
+     953.75,
+     985.0
+    ],
+    [
+     954.0,
+     981.75
+    ],
+    [
+     958.0,
+     981.75
+    ],
+    [
+     958.0,
+     980.25
+    ],
+    [
+     953.75,
+     980.25
+    ],
+    [
+     953.5,
+     977.25
+    ],
+    [
+     944.5,
+     977.75
+    ],
+    [
+     944.25,
+     976.0
+    ],
+    [
+     942.75,
+     976.0
+    ],
+    [
+     942.5,
+     976.75
+    ]
+   ],
+   "holes_pt": [],
+   "source": "vector:stroke_mask"
+  },
+  {
+   "type": "wall",
+   "polygon_pt": [
+    [
+     969.0,
+     972.25
+    ],
+    [
+     966.25,
+     973.75
+    ],
+    [
+     965.25,
+     977.0
+    ],
+    [
+     965.25,
+     981.75
+    ],
+    [
+     966.25,
+     984.75
+    ],
+    [
+     967.5,
+     986.0
+    ],
+    [
+     970.75,
+     986.5
+    ],
+    [
+     973.75,
+     983.75
+    ],
+    [
+     974.25,
+     976.75
+    ],
+    [
+     972.75,
+     973.25
+    ],
+    [
+     971.0,
+     972.25
+    ]
+   ],
+   "holes_pt": [
+    [
+     [
+      968.0,
+      974.5
+     ],
+     [
+      972.0,
+      975.0
+     ],
+     [
+      972.5,
+      981.5
+     ],
+     [
+      971.5,
+      984.25
+     ],
+     [
+      967.5,
+      983.75
+     ],
+     [
+      967.0,
+      976.5
+     ]
+    ]
+   ],
+   "source": "vector:stroke_mask"
+  },
+  {
+   "type": "wall",
+   "polygon_pt": [
+    [
+     923.25,
+     972.0
+    ],
+    [
+     920.25,
+     973.0
+    ],
+    [
+     918.25,
+     975.25
+    ],
+    [
+     917.5,
+     980.75
+    ],
+    [
+     919.5,
+     985.0
+    ],
+    [
+     921.5,
+     986.25
+    ],
+    [
+     925.25,
+     986.5
+    ],
+    [
+     928.0,
+     985.0
+    ],
+    [
+     922.25,
+     984.75
+    ],
+    [
+     920.0,
+     982.75
+    ],
+    [
+     919.5,
+     981.25
+    ],
+    [
+     919.5,
+     977.0
+    ],
+    [
+     921.25,
+     974.25
+    ],
+    [
+     923.25,
+     973.5
+    ],
+    [
+     928.25,
+     973.5
+    ],
+    [
+     926.25,
+     972.25
+    ]
+   ],
+   "holes_pt": [],
+   "source": "vector:stroke_mask"
+  }
+ ]
+}
