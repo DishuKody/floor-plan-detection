@@ -13,7 +13,10 @@ vector:
   door_arc: {r_min: 12, r_max: 40, sweep_min: 60, sweep_max: 120}
   remove_tread_series: true    # v2: equally spaced parallel tread lines (>=5) are symbol linework, not walls
   extend_walls: {min_len: 40, max_ext: 30}
-  gap_closing: {enabled: true, max_gap_m: 3.0}   # direction-agnostic extension of dangling wall ends (needed for diagonal / curved plans)
+  mouth_closure: {enabled: false, min_gap_m: 1.2, max_gap_m: 12.0, pocket_area_m2: [4.0, 150.0], depth_m: 16.0, min_branch_m: 0.6}   # v7 EXPERIMENT (off): links between wall tips; mean IoU 0.517 to 0.554 but several wrong long links, see review_v7.md
+  long_thin_lines: {enabled: true, min_len_m: 4.0}   # v6: long straight strokes in the clutter weight inside the building = glazed screens / partitions
+  dash_chains: {enabled: true, min_chain: 6, min_gap_pt: 1.0, max_gap_m: 6.0, gap_tol: 0.5}   # v6: dash / dash-dot lines at any angle and weight are not walls
+  gap_closing: {enabled: true, max_gap_m: 3.0, pair_gap_m: 12.0, min_end_branch_m: 2.0}   # direction-agnostic extension of dangling wall ends (needed for diagonal / curved plans)
 ocr:
   enabled: true
   tile_px: 1600
@@ -22,7 +25,7 @@ ocr:
   min_score: 0.5
   # cudnn_algo_search: HEURISTIC  # optional GPU-only patch of RapidOCR EXHAUSTIVE search; measured NO speed difference here, so disabled
 instances:
-  open_plan_split: {enabled: true, min_area_m2: 150, min_seeds: 2, cluster_m: 4.0, reach_m: 9.0}   # split huge label-rich regions (rooms open to a concourse); flagged
+  open_plan_split: {enabled: true, min_area_m2: 100, min_seeds: 2, seed_mode: text, min_letters: 2, core_seeds: true, reach_m: 0, trim_frac: 0.6, cluster_m: 4.0}   # v7: split regions that hold several named rooms / open space from text seeds (+ distance-transform core seeds); trim thin spill-over strips; flagged
   split_by_labels: false       # label-guided watershed split of regions holding >=2 unit-ID labels (see report: not independent of proxy metric)
 fixtures:
   px_per_pt: 3

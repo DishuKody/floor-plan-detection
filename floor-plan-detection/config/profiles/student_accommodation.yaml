@@ -6,6 +6,8 @@ vector:
   roi: [40, 330, 1915, 1290]
   footprint: [[725, 360, 1130, 885], [130, 860, 1720, 1270]]
   min_wall_stroke: 0.2
+  dash_chains: {enabled: false}   # this sheet draws window glazing / door-sill runs with regular gaps: keep the v4 grid filter only (bit-identical v4 rooms)
+  mouth_closure: {enabled: false}   # not evaluated on this sheet: keeps v4 rooms bit-identical
   gap_closing: {enabled: false}   # the axis-aligned extension above already closes this sheet; keeps its v4 output unchanged
 fixtures:
   px_per_pt: 3

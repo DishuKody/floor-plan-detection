@@ -5,6 +5,17 @@ from shapely.geometry import Polygon
 from shapely.validation import make_valid
 
 
+def largest_polygon(geom):
+    """The largest Polygon inside any (nested) geometry, or None."""
+    if geom is None or geom.is_empty:
+        return None
+    if geom.geom_type == "Polygon":
+        return geom
+    parts = [largest_polygon(g) for g in getattr(geom, "geoms", [])]
+    parts = [g for g in parts if g is not None]
+    return max(parts, key=lambda g: g.area, default=None)
+
+
 def region_polygon(lab, label, bbox, roi, scale, simplify_pt=0.4, min_hole_pt2=20.0):
     x, y, w, h = bbox
     sub = np.pad((lab[y:y + h, x:x + w] == label).astype(np.uint8), 1)
@@ -17,9 +28,9 @@ def region_polygon(lab, label, bbox, roi, scale, simplify_pt=0.4, min_hole_pt2=2
     holes = [to_pt(cnts[i]) for i, hh in enumerate(hier[0]) if hh[3] == big and cv2.contourArea(cnts[i]) / scale ** 2 >= min_hole_pt2]
     poly = Polygon(to_pt(cnts[big]), holes)
     if not poly.is_valid:
-        poly = make_valid(poly)
-        if poly.geom_type != "Polygon":
-            poly = max((g for g in getattr(poly, "geoms", [poly]) if g.geom_type == "Polygon"), key=lambda g: g.area, default=None)
+        # make_valid returns a GeometryCollection that can hold a MultiPolygon (+ line artefacts) when the contour pinches at pixel joints: flatten
+        # recursively, otherwise the region - often the largest one - is silently lost
+        poly = largest_polygon(make_valid(poly))
     if poly is None or poly.is_empty:
         return None
     return poly.simplify(simplify_pt, preserve_topology=True)

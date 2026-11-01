@@ -24,8 +24,18 @@ def red_mask(bgr):
     return ((r > 170) & (g < 110) & (b < 110) & (r - g > 90)).astype(np.uint8)
 
 
-def extract_marks(bgr, min_area=60, x_area=800, legend_box=None):
-    """-> dict(lines=[{'pts': Nx2 skeleton pixels (x,y) in expected.png px, 'bbox':..}], x_marks=[bbox], mask=uint8)."""
+def _skeleton_topology(comp):
+    sk = skeletonize(comp)
+    nb = cv2.filter2D(sk.astype(np.uint8), -1, np.ones((3, 3), np.float32), borderType=cv2.BORDER_CONSTANT) - sk.astype(np.uint8)
+    jn = (sk & (nb >= 3)).astype(np.uint8)
+    n_j = cv2.connectedComponents(jn, connectivity=8)[0] - 1
+    return sk, int((sk & (nb == 1)).sum()), int(n_j)
+
+
+def extract_marks(bgr, min_area=60, x_area=800, legend_box=None, networks=False, min_side=20):
+    """-> dict(lines=[{'pts': Nx2 skeleton pixels (x,y) in expected.png px, 'bbox':..}], x_marks=[bbox], mask=uint8).
+    networks=True (thick strokes that join into networks, e.g. a Paint annotation on a large sheet): every red component with a side >= min_side px is a
+    line network; a plain cross (skeleton with exactly 4 ends and at most two junctions, i.e. one hand-drawn crossing) is a 'not a shape' X mark; rings / dots are discarded."""
     m = red_mask(bgr)
     n, lab, st, _ = cv2.connectedComponentsWithStats(m, connectivity=8)
     lines, xs, keep = [], [], np.zeros_like(m)
@@ -36,6 +46,17 @@ def extract_marks(bgr, min_area=60, x_area=800, legend_box=None):
         if legend_box and legend_box[0] <= x <= legend_box[2] and legend_box[1] <= y <= legend_box[3]:
             continue
         comp = (lab == i)
+        if networks:
+            if max(w, h) < min_side:
+                continue                                   # review rings, dots, legend swatches
+            keep[comp] = 1
+            sk, ends, n_j = _skeleton_topology(comp)
+            if ends == 4 and n_j <= 2:
+                xs.append([int(x), int(y), int(x + w), int(y + h)])
+            else:
+                yy, xx = np.nonzero(sk)
+                lines.append(dict(pts=np.c_[xx, yy].astype(float), bbox=[int(x), int(y), int(x + w), int(y + h)], area=int(a)))
+            continue
         keep[comp] = 1
         if a >= x_area:
             xs.append([int(x), int(y), int(x + w), int(y + h)])
@@ -46,12 +67,12 @@ def extract_marks(bgr, min_area=60, x_area=800, legend_box=None):
     return dict(lines=lines, x_marks=xs, mask=keep)
 
 
-def register(expected_bgr, target_bgr, marks_mask):
+def register(expected_bgr, target_bgr, marks_mask, scale_hint=None):
     """Affine (6 dof) mapping expected.png px -> target overlay px. Red marks are inpainted before matching."""
     clean = cv2.inpaint(expected_bgr, cv2.dilate(marks_mask, np.ones((5, 5), np.uint8)), 3, cv2.INPAINT_TELEA)
     g1 = cv2.cvtColor(clean, cv2.COLOR_BGR2GRAY)
     g2 = cv2.cvtColor(target_bgr, cv2.COLOR_BGR2GRAY)
-    s = g2.shape[1] / g1.shape[1]
+    s = scale_hint or g2.shape[1] / g1.shape[1]       # scale_hint = overlay px per screenshot px when the screenshot is a crop of the page
     g1u = cv2.resize(g1, None, fx=s, fy=s, interpolation=cv2.INTER_CUBIC)       # same rough scale helps SIFT
     sift = cv2.SIFT_create(4000)
     k1, d1 = sift.detectAndCompute(g1u, None)
@@ -98,6 +119,44 @@ def evaluate_lines(marks, A, rooms, shape, tols=TOLS_PX):
     return agg, per
 
 
+def room_id_map(rooms, shape):
+    """int32 map of the page: 1 + room index inside a room polygon (extra polygons included, holes cut out), 0 elsewhere."""
+    m = np.zeros(shape[:2], np.int32)
+    for i, r in enumerate(rooms, 1):
+        for poly in [r["polygon"]] + list(r.get("extra_polygons", [])):
+            cv2.fillPoly(m, [np.round(np.array(poly)).astype(np.int32)], i)
+        for h in r.get("holes", []):
+            cv2.fillPoly(m, [np.round(np.array(h)).astype(np.int32)], 0)
+    return m
+
+
+def evaluate_separation(marks, A, rooms, shape, offset_px=12, k_tangent=9):
+    """What an annotated room boundary MEANS: the two sides of the line belong to different rooms. Distance recall cannot tell (a dense mesh of
+    polygons is near every line); this does. For every skeleton pixel the local normal is estimated from its nearest skeleton neighbours and the
+    room ids at +-offset_px are compared. `separated` = ids differ; `separated_both_in_rooms` additionally requires both sides to lie in a room
+    (a wall band between two rooms is then not counted). offset_px must exceed the hand-drawing error of the line."""
+    ids = room_id_map(rooms, shape)
+    per, tot, sep, sep2 = [], 0, 0, 0
+    for k, ln in enumerate(marks["lines"]):
+        pts = ln["pts"] @ A[:, :2].T + A[:, 2]
+        if len(pts) < 3:
+            continue
+        d2 = ((pts[:, None, :] - pts[None, :, :]) ** 2).sum(-1)
+        nn = np.argsort(d2, axis=1)[:, :min(k_tangent, len(pts))]
+        a = b = 0
+        for i in range(len(pts)):
+            q = pts[nn[i]] - pts[nn[i]].mean(0)
+            t = np.linalg.svd(q, full_matrices=False)[2][0]
+            n = np.array([-t[1], t[0]])
+            side = [np.clip(np.round(pts[i] + sg * offset_px * n).astype(int), 0, [shape[1] - 1, shape[0] - 1]) for sg in (1, -1)]
+            i1, i2 = int(ids[side[0][1], side[0][0]]), int(ids[side[1][1], side[1][0]])
+            a += i1 != i2
+            b += (i1 != i2) and i1 > 0 and i2 > 0
+        per.append(dict(id=k, n=len(pts), separated=round(a / len(pts), 3), separated_both_in_rooms=round(b / len(pts), 3)))
+        tot += len(pts); sep += a; sep2 += b
+    return dict(offset_px=offset_px, separated=round(sep / max(tot, 1), 3), separated_both_in_rooms=round(sep2 / max(tot, 1), 3), per_line=per)
+
+
 def evaluate_x_marks(marks, A, rooms, shape):
     """The X marks say 'no shape here': report the largest room-polygon area covering each marked region."""
     out = []
@@ -114,7 +173,7 @@ def evaluate_x_marks(marks, A, rooms, shape):
     return out
 
 
-def run(expected_png, out_dir, tag=None, scale_key="polygon", save_dir=None, register_overlay=None):
+def run(expected_png, out_dir, tag=None, scale_key="polygon", save_dir=None, register_overlay=None, networks=False, tols=TOLS_PX, scale_hint=None, sep_offset_px=6):
     exp = cv2.imread(str(expected_png), cv2.IMREAD_COLOR)
     out_dir = Path(out_dir)
     J = json.load(open(out_dir / "rooms.json"))
@@ -123,13 +182,14 @@ def run(expected_png, out_dir, tag=None, scale_key="polygon", save_dir=None, reg
     ov = cv2.imread(str(out_dir / "overlay.png"))
     legend = J["image"].get("legend", {}).get("box_px")
     # the screenshot was taken from an OVERLAY, so register against the overlay (it contains the same coloured fills)
-    marks = extract_marks(exp, legend_box=None)
+    marks = extract_marks(exp, legend_box=None, networks=networks)
     # register against the overlay the screenshot was taken from (same for every version compared), not against the version under test
     reg_target = cv2.imread(str(register_overlay)) if register_overlay else ov
-    A, reg = register(exp, reg_target, marks["mask"])
-    agg, per = evaluate_lines(marks, A, rooms, ov.shape)
+    A, reg = register(exp, reg_target, marks["mask"], scale_hint)
+    agg, per = evaluate_lines(marks, A, rooms, ov.shape, tols)
     xs = evaluate_x_marks(marks, A, rooms, ov.shape)
-    res = dict(tag=tag or str(out_dir), registration=reg, aggregate=agg, lines=per, x_marks=xs, affine_expected_to_overlay_px=A.round(5).tolist())
+    sepm = evaluate_separation(marks, A, rooms, ov.shape, offset_px=sep_offset_px)
+    res = dict(tag=tag or str(out_dir), registration=reg, aggregate=agg, separation=sepm, lines=per, x_marks=xs, affine_expected_to_overlay_px=A.round(5).tolist())
     if save_dir:
         save_dir = Path(save_dir)
         save_dir.mkdir(parents=True, exist_ok=True)

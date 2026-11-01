@@ -160,14 +160,14 @@ def wall_endpoints(walls, k, min_branch_k=2.0, dir_len_k=3.0, rectilinear_only=T
     return out
 
 
-def close_wall_gaps(walls, k, W, door_frac=0.11, pair_frac=0.27, rectilinear_only=True, corner_closure=True):
+def close_wall_gaps(walls, k, W, door_frac=0.11, pair_frac=0.27, rectilinear_only=True, corner_closure=True, endpoint_kw=None):
     """Extend every wall end along its own axis until it meets a wall:
        * gap <= door_frac*W: any wall hit closes it (door threshold);
        * gap  > door_frac*W (up to pair_frac*W): only if it terminates at another wall END (facing collinear end, or the corner of a
          perpendicular wall) - i.e. a wall line continued across an opening up to the next wall corner.
     Returns (closed wall mask, list of closure dicts). Parallel walls are never bridged (rays run along the wall axis only)."""
     H, Wd = walls.shape
-    eps = wall_endpoints(walls, k, rectilinear_only=rectilinear_only)
+    eps = wall_endpoints(walls, k, rectilinear_only=rectilinear_only, **(endpoint_kw or {}))
     closed = walls.copy()
     lines = []
     if not eps:

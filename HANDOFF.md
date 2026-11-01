@@ -2,7 +2,7 @@
 
 Goal (from `floor_plan_detection.md`, the original brief in this folder): detect and segment rooms and architectural elements in floor-plan PDFs, produce
 overlays / masks / JSON polygons, evaluate honestly, keep it integrable with a Java/EJB backend (call the CLI, read `rooms.json` / `elements.json`).
-State: **v5 is current and verified** (68 tests pass; v5 adds sheet calibration, profiles, fast extraction and the A1800 large-plan work - read `floor-plan-detection/review_v5.md` first). Earlier versions are preserved in `floor-plan-detection/versions/v1..v4`.
+State: **v8 is current and verified** (80 tests pass; v8 = independent area segmentation of A1800 against the annotated image, see `floor-plan-detection/review_v8.md`; outputs `areas_overlay.png` + `areas.json` give every area a unique ID and colour; v7 notes in review_v7.md. A1800 room-level IoU vs annotation: mean 0.52 -> 0.65, rooms IoU>=0.5 61% -> 76%, merged rooms 17 -> 11 of 49. v6: v6 = A1800 refinement against the hand-annotated reference, see `floor-plan-detection/review_v6.md`; v5: v5 adds sheet calibration, profiles, fast extraction and the A1800 large-plan work - read `floor-plan-detection/review_v5.md` first). Earlier versions are preserved in `floor-plan-detection/versions/v1..v4`.
 
 ## 1. Set up on another machine (Windows)
 1. Copy this folder (the zip excludes `.venv*`, which are machine-specific). Keep the layout: `setup.bat`, `run.bat`, the PDFs, `expected.png` next to `floor-plan-detection\`.
@@ -25,11 +25,11 @@ No GPU needed: `--device auto` (default) uses CUDA only if PyTorch sees it; othe
 ## 3. Repo map (`floor-plan-detection/`)
 `src/cli.py` entry | `src/pipeline.py` vector pipeline | `src/raster/{pipeline_raster,segmentation}.py` raster | `src/vector/*` paths, doors, walls, regions, template matching |
 `src/postprocessing/{classify,polygons,instances,structural,shapes}.py` | `src/supporting_signals/ocr.py` | `src/gpu.py` device + nvidia-smi sampler | `src/evaluation/*` all metrics |
-`config/{inference,classes}.yaml`, `config/profiles/` | `tests/` (68) | `versions/` v1-v3 | `evaluation_v4/` generated evaluation | `outputs/` Student results.
+`config/{inference,classes}.yaml`, `config/profiles/` | `tests/` (76) | `versions/` v1-v3 | `evaluation_v4/` generated evaluation | `outputs/` Student results.
 
 ## 4. Documents (all `.md` are meant to be kept)
 `HANDOFF.md` (this) | `floor_plan_detection.md` original brief | `floor-plan-detection/README.md` usage + schema | `analysis_report.md` input analysis + approach choice |
-`review_v2.md` (v1->v2 core fixes), `review_v3.md` (GPU benchmark, full-page outputs, windows, raster mode), `review_v5.md` (A1800 / adaptive vector pipeline, measured results), `review_v4.md` (shape boundaries vs `expected.png`; generated:
+`review_v2.md` (v1->v2 core fixes), `review_v3.md` (GPU benchmark, full-page outputs, windows, raster mode), `review_v6.md` (annotated-reference evaluation, dash chains, glazed screens, polygon bug), `review_v5.md` (A1800 / adaptive vector pipeline, measured results), `review_v4.md` (shape boundaries vs `expected.png`; generated:
 `python -m src.evaluation.make_review_v4`). `evaluation_v4/summary.md` = generated numbers.
 
 ## 5. Key measured facts (do not re-derive; re-measure if the code changes)
@@ -42,7 +42,12 @@ No GPU needed: `--device auto` (default) uses CUDA only if PyTorch sees it; othe
 
 * v5 (A1800, 1:200, A0): v4 found 73 rooms / 8 of 38 labels; v5 259 rooms / 35 of 38; boundary-on-structural-stroke 0.43 -> 0.93; GPU x1.30 pipeline, x2.54 OCR; Student unchanged (IoU 1.0 vs v4); expected.png metrics unchanged. See `review_v5.md` section 3.
 
+* v6 (A1800 vs `A1800 Ground Flr_expected.png`): line pixels separating two rooms 0.51 -> 0.59 (10 px offset; both-sides-in-rooms 0.41 -> 0.44), distance recall 0.88 -> 0.905, rooms > 150 m2 5 -> 1; Student IoU 1.0, raster plans identical. Corridor-side open edges are still mostly unmatched. See `review_v6.md`.
+
 ## 6. Pitfalls already hit (so you do not repeat them)
+* `region_polygon` once lost every region whose contour pinches (nested GeometryCollection from `make_valid`): fixed with `largest_polygon`; use `debug.probe_points_pt` in a profile to see why a region at a page point is kept or dropped.
+* The dash-chain rule matches regular window / door-sill runs on Student: keep it off in that profile. Thin clutter-weight lines are added AFTER the wall-end extension (before, they changed the skeleton and re-merged rooms).
+* Judge reference agreement with the separation metric, not distance recall alone (a dense polygon mesh scores well on recall).
 * Windows Application Control occasionally blocks a DLL import (shapely, PIL `_imaging`) at random: simply re-run the command.
 * PDFs here have no text layer (outlined text): scale and labels cannot be read from the PDF; OCR is the only text source.
 * Keyword classification: short keywords must be whole words (`wc` vs "Showcase"); never add substring keywords like `duct`.

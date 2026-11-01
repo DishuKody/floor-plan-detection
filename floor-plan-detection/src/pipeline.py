@@ -9,7 +9,7 @@ from shapely.ops import unary_union
 
 from .vector.extract_pdf_paths import extract_paths
 from .vector.doors import detect_door_arcs
-from .vector.walls import find_grid_paths, rasterize_mask, extend_dangling_walls, rasterize_thick
+from .vector.walls import find_grid_paths, find_dash_chains, find_long_thin_lines, rasterize_mask, extend_dangling_walls, rasterize_thick
 from .vector.candidate_regions import close_doors, label_regions
 from .vector.symbols import find_tread_series
 from .vector.calibrate import structural_stroke, plan_footprint
@@ -100,6 +100,11 @@ def _run_vector(pdf, cfg, classes, out_dir, log, dev, dev_info, sampler):
     grid = find_grid_paths(P)
     if V.get("skip_dashed", not V.get("roi")):
         grid |= {i for i, q in enumerate(P) if q.dashed}        # dash-dot grid / axis / boundary lines are not walls
+    dc = V.get("dash_chains", {})
+    if dc.get("enabled", False):
+        dash = find_dash_chains(P, min_wall, 28.346 * f, min_chain=dc.get("min_chain", 6), min_gap_pt=dc.get("min_gap_pt", 1.0), max_gap_m=dc.get("max_gap_m", 6.0), gap_tol=dc.get("gap_tol", 0.5))
+        cal["dash_chain_segments_removed"] = len(dash - grid)
+        grid |= dash
     da = V["door_arc"]
     arcs = detect_door_arcs(P, r_range=(da["r_min"] * f, da["r_max"] * f), sweep_range=(da["sweep_min"], da["sweep_max"]))
     log(f"      paths={len(P)} grid_dash_paths_removed={len(grid)} door_arcs={len(arcs)} | calibration {cal}")
@@ -125,24 +130,96 @@ def _run_vector(pdf, cfg, classes, out_dir, log, dev, dev_info, sampler):
         # direction-agnostic wall-end extension (diagonal / curved plans): every skeleton end runs on along its own direction to the next wall
         from .raster.segmentation import close_wall_gaps
         sk_dt = cv2.distanceTransform(closed, cv2.DIST_L2, 3)
-        k_px = max(3, int(round(2 * float(np.percentile(sk_dt[sk_dt > 0], 75)))))
-        max_gap_px = gc.get("max_gap_m", 3.0) * 28.346 * f * S
-        closed, gap_lines = close_wall_gaps(closed, k_px, max_gap_px / 0.11, door_frac=0.11, pair_frac=0.11, rectilinear_only=False)
+        ridge = (sk_dt > 0) & (sk_dt >= cv2.dilate(sk_dt, np.ones((3, 3), np.uint8)))      # medial-axis pixels: thickness of the typical wall, not of blobs / poche masses
+        k_px = max(5, int(round(2 * float(np.median(sk_dt[ridge])))))
+        door_m, pair_m = gc.get("max_gap_m", 3.0), max(gc.get("pair_gap_m", gc.get("max_gap_m", 3.0)), gc.get("max_gap_m", 3.0))
+        W_virtual = door_m * 28.346 * f * S / 0.11            # close_wall_gaps takes gaps as fractions of a width: door gaps = 0.11 W = door_m metres
+        px_m = 28.346 * f * S
+        br_m = gc.get("min_end_branch_m", 1.5)
+        ekw = dict(min_branch_k=br_m * px_m / k_px, dir_len_k=max(gc.get("end_direction_m", 0.6), br_m) * px_m / k_px)   # an end counts only on a wall run of real length (the walk must be long enough to see a junction)
+        closed, gap_lines = close_wall_gaps(closed, k_px, W_virtual, door_frac=0.11, pair_frac=0.11 * pair_m / door_m, rectilinear_only=False, endpoint_kw=ekw)
         closed, lab, regs = label_regions(closed, S, 0.0, V["min_area_pt2"] * f * f, V["min_inscribed_radius_pt"] * f)
-        log(f"      direction-agnostic gap closing: {len(gap_lines)} wall-end extensions (wall thickness ~{k_px / S:.1f} pt, max gap {gc.get('max_gap_m', 3.0)} m) -> {len(regs)} regions")
+        write_json(out / "debug" / "gap_closing_lines_pt.json", [dict(p0=(np.array(g["p0"]) / S + roi[:2]).round(2).tolist(), p1=(np.array(g["p1"]) / S + roi[:2]).round(2).tolist(),
+                                                                   gap_m=round(g["gap_px"] / (28.346 * f * S), 2), kind=g["kind"]) for g in gap_lines])
+        log(f"      direction-agnostic gap closing: {len(gap_lines)} wall-end extensions (wall thickness ~{k_px / S:.1f} pt, any wall <= {door_m} m, wall ends / corners <= {pair_m} m) -> {len(regs)} regions")
+    lt = V.get("long_thin_lines", {})
+    mc = V.get("mouth_closure", {})
+    if lt.get("enabled", False) or mc.get("enabled", False):
+        closed_lt = closed.copy()                      # screens / frontage links separate rooms but are not walls: the wall ELEMENTS keep the structural mask
+    if lt.get("enabled", False):
+        # glazed screens / partitions drawn in the clutter weight: long straight strokes inside the building (regular series = hatch / treads are dropped).
+        # Added AFTER the wall-end extension so they can only add barriers (the extension is computed on the structural walls alone).
+        lt_idx = find_long_thin_lines(P, skip, 0.8 * dom_w, min_wall, 28.346 * f, foot.buffer(3 * 28.346 * f), min_len_m=lt.get("min_len_m", 4.0))
+        for i in lt_idx:
+            cv2.polylines(closed_lt, [((P[i].pts - roi[:2]) * S).astype(np.int32)], False, 255, 2)
+        cal["long_thin_lines_added"] = len(lt_idx)
+        log(f"      long thin lines (glazed screens / partitions in the clutter weight): {len(lt_idx)} strokes added")
+    if mc.get("enabled", False):
+        # open-sided rooms: the frontage line that closes a room along a corridor is recovered from the tips of partitions / stubs: a link between two tips is kept
+        # when it turns an OPEN region into a bounded room-sized pocket (never cuts a closed room)
+        from .vector.mouths import close_mouths
+        t_mc = time.time()
+        fmask = np.zeros_like(closed_lt)
+        for g in getattr(foot, "geoms", [foot]):
+            if g.geom_type == "Polygon":
+                cv2.fillPoly(fmask, [((np.array(g.exterior.coords) - roi[:2]) * S).astype(np.int32)], 255)
+        sk_dt2 = cv2.distanceTransform(closed_lt, cv2.DIST_L2, 3)
+        ridge2 = (sk_dt2 > 0) & (sk_dt2 >= cv2.dilate(sk_dt2, np.ones((3, 3), np.uint8)))
+        k_mc = max(5, int(round(2 * float(np.median(sk_dt2[ridge2])))))
+        mdbg = {} if cfg.get('debug', {}).get('mouths') else None
+        closed_lt, mouth_links, n_tips, n_cand = close_mouths(closed_lt, k_mc, 28.346 * f * S, allowed=fmask, min_gap_m=mc.get("min_gap_m", 1.2), max_gap_m=mc.get("max_gap_m", 12.0),
+                                                              area_m2=tuple(mc.get("pocket_area_m2", (4.0, 150.0))), depth_m=mc.get("depth_m", 16.0), min_branch_m=mc.get("min_branch_m", 0.6), debug=mdbg)
+        if mdbg is not None:
+            write_json(out / "debug" / "mouth_debug_px.json", dict(roi=list(roi), S=S, **mdbg))
+        cal["mouth_links"] = len(mouth_links)
+        write_json(out / "debug" / "mouth_links_pt.json", [dict(p0=(np.array(a) / S + roi[:2]).round(2).tolist(), p1=(np.array(b) / S + roi[:2]).round(2).tolist(), pocket_m2=m) for a, b, m in mouth_links])
+        log(f"      mouth closure: {len(mouth_links)} frontage links from {n_tips} wall tips ({n_cand} candidate pairs, {time.time() - t_mc:.1f}s)")
+    if lt.get("enabled", False) or mc.get("enabled", False):
+        _, lab, regs = label_regions(closed_lt, S, 0.0, V["min_area_pt2"] * f * f, V["min_inscribed_radius_pt"] * f)
     log(f"      wall extensions={len(ext)} candidate regions={len(regs)}")
     tick("wall_mask_extension_doors_labeling")
 
+
+    def stage_probe(name):
+        for pp in cfg.get("debug", {}).get("probe_points_pt", []):
+            hit = [(round(q.area / pt2_per_m2), r.get("split_from"), bool(r.get("open_core"))) for q, r in rooms_poly if q.contains(Point(pp))]
+            log(f"      probe@{name} {pp}: {hit}")
     log("[3/6] region polygons")
     rooms_poly = []
+    dropped = dict(touches_roi_border=0, no_polygon=0, outside_footprint=0)
     for r in regs:
         if r["border"]:
+            dropped["touches_roi_border"] += 1
             continue
         poly = region_polygon(lab, r["label"], r["bbox"], roi, S)
-        if poly is None or not foot.contains(poly.representative_point()):
+        if poly is None:
+            dropped["no_polygon"] += 1
             continue
+        if not foot.contains(poly.representative_point()):
+            # an automatic footprint is an approximation: a region that lies mostly inside it is kept (clipped); a single representative point decides too little
+            inter = poly.intersection(foot) if (cal["footprint_source"] == "auto" and V.get("footprint_clip", True)) else None
+            if inter is None or inter.is_empty or inter.area < 0.5 * poly.area:
+                dropped["outside_footprint"] += 1
+                continue
+            poly = inter if inter.geom_type == "Polygon" else max((g for g in inter.geoms if g.geom_type == "Polygon"), key=lambda g: g.area)
+            dropped["clipped_to_footprint"] = dropped.get("clipped_to_footprint", 0) + 1
         rooms_poly.append((poly, r))
-    log(f"      rooms inside building footprint={len(rooms_poly)}")
+    log(f"      rooms inside building footprint={len(rooms_poly)} (regions dropped: {dropped})")
+    for px_pt in cfg.get("debug", {}).get("probe_points_pt", []):          # diagnostics: why is the region at this page point kept or dropped?
+        xi, yi = int((px_pt[0] - roi[0]) * S), int((px_pt[1] - roi[1]) * S)
+        lb = int(lab[yi, xi]) if (0 <= yi < lab.shape[0] and 0 <= xi < lab.shape[1]) else -1
+        rr = next((r for r in regs if r["label"] == lb), None)
+        why = "wall / outside ROI" if lb <= 0 else ("filtered: area or inscribed radius too small" if rr is None else
+              ("dropped: touches the ROI border" if rr["border"] else "candidate region (footprint test decides)"))
+        extra = ""
+        if rr is not None and not rr["border"]:
+            pg = region_polygon(lab, lb, rr["bbox"], roi, S)
+            if pg is None:
+                extra = " | polygon conversion failed"
+            else:
+                extra = f" | polygon {pg.area / pt2_per_m2:.0f} m2, {100 * pg.intersection(foot).area / pg.area:.0f}% inside the footprint, representative point inside: {foot.contains(pg.representative_point())}"
+        log(f"      probe {px_pt}: label={lb} {why}" + (f" area={rr['area_pt2'] / (28.346 * f) ** 2:.1f} m2 inscribed={rr['inscribed_pt']:.1f} pt" if rr else "") + extra)
+    stage_probe("regions")
     tick("region_polygons")
 
     texts = []
@@ -192,13 +269,31 @@ def _run_vector(pdf, cfg, classes, out_dir, log, dev, dev_info, sampler):
             pts = []
             for t in texts:
                 c = np.array([(t["bbox"][0] + t["bbox"][2]) / 2, (t["bbox"][1] + t["bbox"][3]) / 2])
-                if poly.contains(Point(c)) and match_keywords(t["text"], room_cls)[0]:
+                name_like = (sum(ch.isalpha() for ch in t["text"]) >= osp.get("min_letters", 3)) if osp.get("seed_mode", "keywords") == "text" else bool(match_keywords(t["text"], room_cls)[0])
+                if poly.contains(Point(c)) and name_like:
                     for q in pts:                    # words of one label ("Design 01" / "Tech" / "Engineering") share a seed
                         if np.linalg.norm(q[0] / q[1] - c) < near:
                             q[0] += c; q[1] += 1; break
                     else:
                         pts.append([c.copy(), 1])
             seeds = [q[0] / q[1] for q in pts]
+            if len(seeds) < osp.get("min_labels", 1 if osp.get("core_seeds", False) else osp.get("min_seeds", 2)):
+                new.append((poly, r)); continue
+            n_label = len(seeds)
+            if osp.get("core_seeds", False):
+                # wide open space (concourse / corridor) that no label names: its own seeds, at distance-transform maxima away from every label
+                x, y, w, h = r["bbox"]
+                reg = (lab[y:y + h, x:x + w] == r["label"]).astype(np.uint8)
+                dtr = cv2.distanceTransform(np.pad(reg, 1), cv2.DIST_L2, 3)[1:-1, 1:-1]
+                mn = osp.get("core_halfwidth_m", 1.6) * 28.346 * f * S
+                sep = osp.get("core_sep_m", 6.0) * 28.346 * f * S
+                lab_px = [((np.array(sd) - roi[:2]) * S - [x, y]) for sd in seeds]
+                lm = (dtr >= mn) & (dtr >= cv2.dilate(dtr, np.ones((int(sep) | 1,) * 2, np.uint8)) - 1e-6)
+                for yy, xx in np.argwhere(lm)[np.argsort(-dtr[lm])]:
+                    pt = np.array([xx, yy], float)
+                    if all(np.linalg.norm(pt - q) > sep for q in lab_px):
+                        lab_px.append(pt)
+                        seeds.append((pt + [x, y]) / S + roi[:2])
             if len(seeds) < osp.get("min_seeds", 2):
                 new.append((poly, r)); continue
             parts = split_region(lab, r["label"], r["bbox"], seeds, roi, S)
@@ -207,9 +302,17 @@ def _run_vector(pdf, cfg, classes, out_dir, log, dev, dev_info, sampler):
                 # a room does not reach further than `reach_m` from its label: what is left of the region is the open space (concourse / circulation)
                 reach = osp.get("reach_m", 9.0) * 28.346 * f
                 mine = []
-                for g, sd in zip(parts, seeds):
-                    g = g.intersection(Point(sd).buffer(reach))
+                for k_, (g, sd) in enumerate(zip(parts, seeds)):
+                    if reach > 0 and k_ < n_label:
+                        g = g.intersection(Point(sd).buffer(reach))
                     g = g if g.geom_type == "Polygon" else max(g.geoms, key=lambda q: q.area)
+                    if k_ < n_label and osp.get("trim_frac", 0) > 0:
+                        # a room is fat, the strip of corridor its basin spills into is thin: opening scaled by the part's own inscribed radius (sharp corners kept)
+                        r_in = g.exterior.distance(polylabel(g, 1.0))
+                        op = g.buffer(-osp["trim_frac"] * r_in, join_style=2).buffer(osp["trim_frac"] * r_in, join_style=2).intersection(g)
+                        cand = [q for q in getattr(op, "geoms", [op]) if q.geom_type == "Polygon" and not q.is_empty]
+                        if cand:
+                            g = min(cand, key=lambda q: q.distance(Point(sd))) if not g.contains(Point(sd)) else next((q for q in cand if q.contains(Point(sd))), max(cand, key=lambda q: q.area))
                     mine.append(g)
                 rest = poly.difference(unary_union(mine).buffer(0.3))
                 new += [(g, dict(r, split_from=r["label"], n_split=len(parts), open_plan=True)) for g in mine]
@@ -220,6 +323,7 @@ def _run_vector(pdf, cfg, classes, out_dir, log, dev, dev_info, sampler):
         rooms_poly = new
         log(f"      open-plan split: {n_open} large regions with >= {osp.get('min_seeds', 2)} room labels split from their labels -> {len(rooms_poly)} rooms")
 
+    stage_probe("open_plan")
     sr = cfg.get("structural_pass", {})
     if sr.get("enabled") and texts:
         th = rasterize_thick(P, skip, roi, S)
@@ -229,6 +333,7 @@ def _run_vector(pdf, cfg, classes, out_dir, log, dev, dev_info, sampler):
         rooms_poly = [rp for i, rp in enumerate(rooms_poly) if i not in drop] + [(pg, dict(base, structural=txt, area_pt2=pg.area, inscribed_pt=7.0)) for pg, _, txt in res]
         log(f"      structural pass: {len(res)} named spaces re-segmented ({', '.join(t for *_, t in res)}), replaced {len(drop)} fragments")
 
+    stage_probe("structural")
     tick("structural_pass")
     pods = []
     fx = cfg.get("fixtures", {})
@@ -269,6 +374,7 @@ def _run_vector(pdf, cfg, classes, out_dir, log, dev, dev_info, sampler):
                 new.append((box(*p["box_pt"]), dict(base_r, forced="bathroom", pod=p, standalone_pod=True)))
         rooms_poly = new
 
+    stage_probe("pods")
     tick("pod_template_matching")
     log("[5/6] classification")
     rooms = []
@@ -408,6 +514,9 @@ def _run_vector(pdf, cfg, classes, out_dir, log, dev, dev_info, sampler):
             cv2.fillPoly(mk, [np.array(h).astype(np.int32)], (255, 255, 255))
     assert mk.shape == base.shape
     cv2.imwrite(str(out / "room_masks.png"), mk)
+    from .output.areas import write_areas
+    n_areas = write_areas(base, rooms, scale_r, out)       # every area: unique ID + distinct colour on the full page (areas_overlay.png, areas.json)
+    log(f"      independent areas written: {n_areas} (areas_overlay.png, areas.json)")
     cv2.imwrite(str(out / "debug" / "wall_mask_roi.png"), cv2.resize(255 - closed, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA))
 
     image = dict(width=W, height=H, coordinate_origin="top_left", units="pixels",

@@ -28,7 +28,10 @@ template matching (PyTorch FFT). Measured on the RTX 2050: x1.39 pipeline speed-
 CPU-vs-GPU benchmark (interleaved rounds): `python -m src.evaluation.benchmark_device "..\Student Accomodation.pdf" <dir> --rounds 5` (needs `.venv_cpuref`, a CPU-only reference env).
 Then, optionally: `.venv\Scripts\python.exe -m src.evaluation.report outputs` and `.venv\Scripts\python.exe -m pytest -q`.
 
-## Latest (v5): adaptive vector pipeline, very large plans
+## Latest (v6): A1800 refined against a hand-annotated reference
+`review_v6.md`: generic dash-line filter (any angle / weight, regular gaps), glazed screens drawn in the clutter weight, medial-axis wall thickness, a polygon-conversion bug fix (large pinched regions were silently dropped), annotated-reference evaluation with a room-separation metric (`python -m src.evaluation.run_v6_evaluation`). Student and the raster plans are unchanged (IoU 1.0 / identical); tests: 76.
+
+## Earlier (v5): adaptive vector pipeline, very large plans
 `review_v5.md`: stroke threshold, plan footprint and pt-parameters are derived from the sheet (scaled by the printed scale); direction-agnostic wall-end extension; open-plan split by labels; circles as elements; school room classes; 6-12x faster path extraction; sheet profiles (`config/profiles/`, `--profile`, `run.bat ... [profile]`). Student unchanged (IoU 1.0), `expected.png` metrics unchanged, A1800 (A0, 1:200) 73 -> 259 rooms, 8 -> 35 of 38 labels inside a room. Tests: 68.
 
 ## Earlier (v4): accurate boundaries on simple plans

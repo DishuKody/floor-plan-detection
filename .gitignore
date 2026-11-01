@@ -10,6 +10,7 @@ __pycache__/
 # generated run results (reproducible with run.bat); curated deliverables live in evaluation_v4/ and evaluation_v5/
 /output*/
 /evaluation_v5_runs/
+/evaluation_v6_runs/
 /floor-plan-detection/outputs/
 /floor-plan-detection/bench*/
 

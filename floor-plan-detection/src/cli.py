@@ -44,7 +44,8 @@ def main():
     out = Path(a.out) if a.out else ROOT / "outputs" / stem
     run_vector(a.pdf, cfg, classes, out)
     # named copies of the main deliverables: <input-name>_<what>.<ext>
-    named = {"overlay.png": f"{stem}_overlay.png", "room_masks.png": f"{stem}_masks.png", "rooms.json": f"{stem}_rooms.json", "elements.json": f"{stem}_elements.json"}
+    named = {"overlay.png": f"{stem}_overlay.png", "room_masks.png": f"{stem}_masks.png", "rooms.json": f"{stem}_rooms.json", "elements.json": f"{stem}_elements.json", "areas_overlay.png": f"{stem}_areas.png", "areas.json": f"{stem}_areas.json"}
+    named = {k: v for k, v in named.items() if (out / k).exists()}
     for src, dst in named.items():
         shutil.copyfile(out / src, out / dst)
     print("FINAL OUTPUT FILES in", out.resolve())
